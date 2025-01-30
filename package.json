@@ -6,22 +6,39 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write \"**/*.{js,ts,tsx,md,mdx,json}\"",
+    "reset": "rm -rf node_modules .next .eslintcache .cache package-lock.json && npm install",
+    "nvmrc": "echo $(node -p -e 'require(\"./package\").engines.node.split(\">=\").join(\"\")') > .nvmrc"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.1.6",
+    "next": "15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.1.6"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20.17.16",
+    "@types/react": "^19.0.8",
     "@types/react-dom": "^19",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "eslint": "^9",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.19.0",
     "eslint-config-next": "15.1.6",
-    "@eslint/eslintrc": "^3"
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-jsonc": "^2.19.1",
+    "eslint-plugin-markdown": "^5.1.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "jsonc-eslint-parser": "^2.4.0",
+    "postcss": "^8.5.1",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": "22.13.0"
   }
 }

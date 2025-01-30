@@ -1,0 +1,67 @@
+{
+  // 1) Automatically save files on focus change or other triggers
+  "files.autoSave": "onFocusChange",
+
+  // 2) Format on save using Prettier
+  //    This will handle code style: indentation, quotes, trailing commas, etc.
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // (Optional) If you have a Prettier config file, point to it:
+  "prettier.configPath": ".prettierrc.js",
+
+  // 3) ESLint Integration
+  //    If you're using the new eslint.config.js (or .mjs) "flat config" style:
+  //    - "useFlatConfig" should be set to "true" if your project does NOT have a .eslintrc.*.
+  //    - If you do still rely on .eslintrc.* in some way, set it to "false".
+  "eslint.useFlatConfig": false,
+
+  // Tell ESLint which file types to validate:
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "jsonc",
+    "markdown"
+  ],
+
+  // Show the ESLint status icon in the status bar
+  "eslint.alwaysShowStatus": true,
+
+  // 4) Disable VSCode's built-in JS formatter to avoid conflicts
+  "javascript.format.enable": false,
+  "typescript.format.enable": false,
+
+  // 5) Auto-fix other ESLint issues on save (like `prefer-const`, `no-unused-vars`, etc.)
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // 6) (Optional) Language-specific default formatters
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
