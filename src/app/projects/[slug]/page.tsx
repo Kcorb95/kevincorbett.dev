@@ -1,81 +1,68 @@
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { readMdxContent, getAllSlugs } from '@/lib/mdx';
+import {
+  Box,
+  Title,
+  Text,
+  Anchor,
+  TypographyStylesProvider,
+} from '@mantine/core';
 
-/**
- * Generates static parameters for the dynamic project pages.
- * This function retrieves all project slugs and returns them in the format required for
- * Next.js dynamic routing.
- *
- * @returns {Promise<{ slug: string }[]>} An array of objects containing project slugs.
- */
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  // Fetch all available project slugs from the 'projects' directory
+export async function generateStaticParams() {
   const slugs = getAllSlugs('projects');
-
-  // Return slugs formatted as an array of objects for dynamic routing
   return slugs.map((slug) => ({ slug }));
 }
 
-/**
- * ProjectPage Component
- *
- * This component dynamically renders a project page based on the provided slug.
- * It fetches and renders MDX content for the given project. If the project does not exist,
- * it triggers a 404 error page.
- *
- * @param {Object} props - The component properties.
- * @param {Promise<{ slug: string }>} props.params - The dynamic route parameters containing the project slug.
- * @returns {JSX.Element} The rendered project page.
- */
-export default async function ProjectPage(props: {
+export const dynamicParams = false;
+export const runtime = 'nodejs';
+
+interface ProjectPageProps {
   params: Promise<{ slug: string }>;
-}): Promise<React.ReactElement> {
-  // Await the resolved params to extract the project slug
+}
+
+const ProjectPage = async (props: ProjectPageProps) => {
   const { slug } = await props.params;
 
-  // Retrieve MDX content for the given project slug
   const mdx = readMdxContent('projects', slug);
-
-  // If the project is not found, trigger a 404 error page
   if (!mdx) {
     notFound();
   }
 
-  // Extract metadata (e.g., title, date, tech stack, GitHub link) and content from the MDX file
   const { data, content } = mdx;
 
   return (
-    <article className="prose dark:prose-invert max-w-none py-8">
-      {/* Render the project title */}
-      <h1>{data.title}</h1>
+    <Box pb="xl">
+      <Title order={1}>{data.title}</Title>
+      <Text size="sm" c="dimmed">
+        {data.date}
+      </Text>
 
-      {/* Display the project publication date with a subtle styling */}
-      <p className="text-sm text-gray-500">{data.date}</p>
-
-      {/* Conditionally display the tech stack if available */}
       {data.tech?.length ? (
-        <p className="mb-2 text-sm text-gray-500">
+        <Text size="sm" c="dimmed">
           Tech: {data.tech.join(', ')}
-        </p>
+        </Text>
       ) : null}
 
-      {/* Render a GitHub link if one is provided */}
       {data.github && (
-        <p>
-          <a
+        <Text size="sm" pb="sm">
+          <Anchor
             href={data.github}
             target="_blank"
             rel="noreferrer"
-            className="text-blue-600 hover:underline dark:text-blue-400"
+            c="blue"
+            underline="always"
           >
             View on GitHub
-          </a>
-        </p>
+          </Anchor>
+        </Text>
       )}
 
-      {/* Render the MDX content dynamically */}
-      <MDXRemote source={content} />
-    </article>
+      <TypographyStylesProvider>
+        <MDXRemote source={content} />
+      </TypographyStylesProvider>
+    </Box>
   );
-}
+};
+
+export default ProjectPage;

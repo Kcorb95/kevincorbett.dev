@@ -1,9 +1,293 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/*============================================================================
+  Global Tailwind CSS File (CSS‑First)
+  - Uses native Tailwind CSS v4 configuration in CSS
+  - Imports Mantine styles and tailwindcss-animate plugin
+============================================================================*/
 
+/*---------------------------------------------------------------------------
+  Layers & Imports
+---------------------------------------------------------------------------*/
+@layer theme, base, mantine, components, utilities;
+
+@import 'tailwindcss';
+
+@import '@mantine/core/styles.layer.css';
+
+@plugin 'tailwindcss-animate';
+
+/* Custom variant for dark mode */
+@custom-variant dark (&:is(.dark *));
+
+/*============================================================================
+  Theme Tokens: Design Tokens and Utility Values
+============================================================================*/
+@theme {
+  /*----------------------------
+    Color Tokens
+    (Base values to be used throughout your design system)
+  ----------------------------*/
+  /* Primary Colors */
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  /* Secondary Colors */
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  /* Accent & Destructive */
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 100% 50%;
+  --destructive-foreground: 210 40% 98%;
+  /* Background / Foreground / Misc */
+  --background: 0 0% 100%;
+  --foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 47.4% 11.2%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 47.4% 11.2%;
+  --ring: 215 20.2% 65.1%;
+  --radius: 0.5rem;
+
+  /*----------------------------
+    Color Palette
+    (Computed values for Tailwind utilities)
+  ----------------------------*/
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-ring: hsl(var(--ring));
+
+  /*----------------------------
+    Typography Scale (Font Sizes)
+  ----------------------------*/
+  --text-10: 1rem;
+  --text-12: 1.2rem;
+  --text-14: 1.4rem;
+  --text-16: 1.6rem;
+  --text-18: 1.8rem;
+  --text-20: 2rem;
+  --text-24: 2.4rem;
+  --text-30: 3rem;
+  --text-36: 3.6rem;
+  --text-48: 4.8rem;
+  --text-60: 6rem;
+  --text-72: 7.2rem;
+  --text-96: 9.6rem;
+  --text-128: 12.8rem;
+
+  /*----------------------------
+    Spacing Scale
+  ----------------------------*/
+  --spacing-0: 0rem;
+  --spacing-0.5: 0.5rem;
+  --spacing-1: 1rem;
+  --spacing-1.5: 1.5rem;
+  --spacing-2: 2rem;
+  --spacing-2.5: 2.5rem;
+  --spacing-3: 3rem;
+  --spacing-3.5: 3.5rem;
+  --spacing-4: 4rem;
+  --spacing-4.5: 4.5rem;
+  --spacing-5: 5rem;
+  --spacing-5.5: 5.5rem;
+  --spacing-6: 6rem;
+  --spacing-6.5: 6.5rem;
+  --spacing-7: 7rem;
+  --spacing-8: 8rem;
+  --spacing-9: 9rem;
+  --spacing-10: 10rem;
+  --spacing-11: 11rem;
+  --spacing-12: 12rem;
+  --spacing-14: 14rem;
+  --spacing-16: 16rem;
+  --spacing-20: 20rem;
+  --spacing-24: 24rem;
+  --spacing-25: 25rem;
+  --spacing-28: 28rem;
+  --spacing-32: 32rem;
+  --spacing-36: 36rem;
+  --spacing-40: 40rem;
+  --spacing-44: 44rem;
+  --spacing-48: 48rem;
+  --spacing-52: 52rem;
+  --spacing-56: 56rem;
+  --spacing-60: 60rem;
+  --spacing-64: 64rem;
+  --spacing-72: 72rem;
+  --spacing-80: 80rem;
+  --spacing-96: 96rem;
+
+  /*----------------------------
+    Line Heights
+  ----------------------------*/
+  --leading-1: 1rem;
+  --leading-1.5: 1.5rem;
+  --leading-2: 2rem;
+  --leading-3: 3rem;
+  --leading-3.5: 3.5rem;
+  --leading-4: 4rem;
+  --leading-4.5: 4.5rem;
+  --leading-5: 5rem;
+  --leading-5.5: 5.5rem;
+  --leading-6: 6rem;
+  --leading-6.5: 6.5rem;
+  --leading-7: 7rem;
+  --leading-8: 8rem;
+  --leading-9: 9rem;
+  --leading-10: 10rem;
+
+  /*----------------------------
+    Letter Spacing
+  ----------------------------*/
+  --tracking-tighter: -0.05rem;
+  --tracking-tight: -0.025rem;
+  --tracking-normal: 0rem;
+  --tracking-wide: 0.025rem;
+  --tracking-wider: 0.05rem;
+  --tracking-widest: 0.1rem;
+
+  /*----------------------------
+    Border Radius
+  ----------------------------*/
+  --radius-none: 0;
+  --radius-sm: 0.2rem;
+  --radius-default: 0.4rem;
+  --radius-md: 0.6rem;
+  --radius-lg: 0.8rem;
+  --radius-xl: 1rem;
+  --radius-12: 1.2rem;
+  --radius-14: 1.4rem;
+  --radius-16: 1.6rem;
+  --radius-18: 1.8rem;
+  --radius-20: 2rem;
+  --radius-22: 2.2rem;
+  --radius-24: 2.4rem;
+  --radius-full: 9999px;
+
+  /*----------------------------
+    Box Shadows
+  ----------------------------*/
+  --shadow-sm: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.05);
+  --shadow-default: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 1.6rem 3.6rem rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.1);
+  --shadow-inner: inset 0 0.2rem 0.4rem rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 8px 16px -4px rgba(0, 0, 0, 0.08);
+  --shadow-card-2: 0 8px 16px -4px rgba(0, 0, 0, 0.08);
+  --shadow-form: 0px 5px 8px rgba(28, 39, 43, 0.05);
+  --shadow-form-focus: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  --shadow-screenshot: 0px 0px 8px 5px rgba(0, 0, 0, 0.05);
+  --shadow-none: none;
+
+  /*----------------------------
+    Font Families
+  ----------------------------*/
+  --font-inter: 'Inter', sans-serif;
+  --font-inter-semibold: 'InterSemibold', sans-serif;
+  --font-ibm-pm: 'IBM Plex Mono', monospace;
+  --font-degular-display-semibold: 'Degular-Display-Semibold', sans-serif;
+  --font-default: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', Helvetica, Arial,
+    sans-serif;
+
+  /*----------------------------
+    Transition & Max Width
+  ----------------------------*/
+  --transition-all: all 0.2s ease-in-out;
+  --max-width-default: 1100px;
+}
+
+/*============================================================================
+  Custom Utilities
+============================================================================*/
+@theme {
+  --transition-all: all 0.2s ease-in-out;
+}
+@utility transition-all {
+  transition: var(--transition-all);
+}
+
+@layer utilities {
+  .text-xs {
+    font-size: var(--text-12);
+  }
+  .text-sm {
+    font-size: var(--text-14);
+  }
+  .text-base {
+    font-size: var(--text-16);
+  }
+  .text-lg {
+    font-size: var(--text-18);
+  }
+  .text-xl {
+    font-size: var(--text-20);
+  }
+  .text-2xl {
+    font-size: var(--text-24);
+  }
+  .text-3xl {
+    font-size: var(--text-30);
+  }
+  .text-4xl {
+    font-size: var(--text-36);
+  }
+  .text-5xl {
+    font-size: var(--text-48);
+  }
+  .text-6xl {
+    font-size: var(--text-60);
+  }
+  .text-7xl {
+    font-size: var(--text-72);
+  }
+  .text-8xl {
+    font-size: var(--text-96);
+  }
+  .text-9xl {
+    font-size: var(--text-128);
+  }
+}
+
+/*============================================================================
+  Base Styles & Compatibility
+============================================================================*/
+
+/* Compatibility for default border color */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+/* Default color tokens and dark mode overrides */
 @layer base {
   :root {
+    /* Use our defined tokens as the source of truth */
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
@@ -27,6 +311,7 @@
   }
 
   .dark {
+    /* Update tokens for dark mode as needed */
     --background: 224 71% 4%;
     --foreground: 213 31% 91%;
     --muted: 223 47% 11%;
@@ -49,11 +334,40 @@
   }
 }
 
+/* Global base styles */
 @layer base {
-  * {
-    @apply border-border;
+  html {
+    /* 62.5% of 16px = 10px, so 1rem = 10px */
+    font-size: 62.5%;
   }
   body {
-    @apply bg-background font-sans text-foreground antialiased;
+    @apply bg-background text-foreground font-inter antialiased;
+  }
+}
+
+/*============================================================================
+  Component Styles
+============================================================================*/
+
+/* Container component */
+@layer components {
+  .container {
+    max-width: 100%;
+    padding-left: var(--spacing-4);
+    padding-right: var(--spacing-4);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media (min-width: 1024px) {
+    /* lg */
+    .container {
+      max-width: 1224px;
+    }
+  }
+  @media (min-width: 1280px) {
+    /* xl */
+    .container {
+      max-width: 1224px;
+    }
   }
 }

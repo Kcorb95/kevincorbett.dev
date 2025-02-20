@@ -1,16 +1,29 @@
-export default function ResumePage() {
+'use client';
+
+import Link from 'next/link';
+import { Stack, Title, Text, Button } from '@mantine/core';
+import { IconDownload } from '@tabler/icons-react';
+
+const ResumePage = () => {
   return (
-    <section className="space-y-4">
-      <h1 className="text-3xl font-bold">Resume</h1>
-      <p>Below is my latest resume. Feel free to download!</p>
-      <a
-        href="/resume.pdf"
-        className="inline-block rounded bg-gray-200 px-4 py-2 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700"
-        download
+    <Stack gap="md" align="center">
+      <Title order={1} size="3xl">
+        Resume
+      </Title>
+      <Text>Below is my latest resume. Feel free to download!</Text>
+      <Button
+        rightSection={<IconDownload size={16} />}
+        component={Link}
+        href="./resume.pdf"
+        variant="filled"
+        color="cyan"
+        size="lg"
       >
-        Download PDF
-      </a>
-      {/* Could embed an iframe or HTML version if you wish */}
-    </section>
+        Download
+      </Button>
+      {/* Could embed an iframe or a web-based version here */}
+    </Stack>
   );
-}
+};
+
+export default ResumePage;

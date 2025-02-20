@@ -1,32 +1,39 @@
+'use client';
+
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Box, Stack, Title, Text, Group, Button } from '@mantine/core';
 
-export default function HomePage() {
+const HomePage = () => {
   return (
-    <section className="my-10 space-y-4 text-center">
-      <h1 className="text-4xl font-bold">Hey, I’m Kevin Corbett</h1>
-      <p className="text-lg">
-        I build solutions with JavaScript, AWS, DevOps, and more. I also manage
-        developer communities.
-      </p>
-
-      <div className="mt-6 flex flex-wrap justify-center gap-4">
-        <Link href="/about">
-          <Button variant="outline">About Me</Button>
-        </Link>
-        <Link href="/projects">
-          <Button variant="outline">Projects</Button>
-        </Link>
-        <Link href="/blog">
-          <Button variant="outline">Blog</Button>
-        </Link>
-        <Link href="/resume">
-          <Button variant="outline">Resume</Button>
-        </Link>
-        <Link href="/contact">
-          <Button variant="outline">Contact</Button>
-        </Link>
-      </div>
-    </section>
+    <Box pb="2.5rem">
+      <Stack align="center" gap="xl">
+        <Title order={1} size="4xl" fw="bold" ta="center">
+          Hey, I’m Kevin Corbett
+        </Title>
+        <Text size="lg" ta="center">
+          I build solutions with JavaScript, AWS, DevOps, and more. I also
+          manage developer communities.
+        </Text>
+        <Group gap="md" justify="center" wrap="wrap">
+          <Button component={Link} href="/about" variant="outline">
+            About Me
+          </Button>
+          <Button component={Link} href="/projects" variant="outline">
+            Projects
+          </Button>
+          <Button component={Link} href="/blog" variant="outline">
+            Blog
+          </Button>
+          <Button component={Link} href="/resume" variant="outline">
+            Resume
+          </Button>
+          <Button component={Link} href="/contact" variant="outline">
+            Contact
+          </Button>
+        </Group>
+      </Stack>
+    </Box>
   );
-}
+};
+
+export default HomePage;

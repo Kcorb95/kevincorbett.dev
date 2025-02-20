@@ -1,20 +1,18 @@
 import Link from 'next/link';
 import { listAllMdxMeta } from '@/lib/mdx';
+import {
+  Box,
+  Title,
+  Stack,
+  Paper,
+  Text,
+  Anchor,
+  Group,
+  Badge,
+} from '@mantine/core';
 
-/**
- * ProjectsIndexPage Component
- *
- * This component fetches and displays a list of all project posts.
- * Each project includes a title, date, description, and a list of technologies used.
- * Clicking on a project title navigates to its individual page.
- *
- * @returns {JSX.Element} The rendered projects index page.
- */
-export default function ProjectsIndexPage(): React.ReactElement {
-  // Retrieve metadata (front matter) for all MDX project files from the 'projects' directory
+const ProjectsIndexPage = () => {
   const mdxItems = listAllMdxMeta('projects');
-
-  // Sort projects by date in descending order (most recent first)
   mdxItems.sort(
     (a, b) =>
       new Date(b.frontMatter.date).getTime() -
@@ -22,52 +20,47 @@ export default function ProjectsIndexPage(): React.ReactElement {
   );
 
   return (
-    <section className="py-8">
-      {/* Page title */}
-      <h1 className="mb-4 text-3xl font-bold">Projects</h1>
-
-      {/* List of projects */}
-      <ul className="space-y-6">
+    <Box pb="xl">
+      <Title order={1} size="3xl" fw="bold">
+        Projects
+      </Title>
+      <Stack component="ul" gap="xl">
         {mdxItems.map((item) => {
-          // Extract necessary metadata from each project item
           const { slug, frontMatter } = item;
-
           return (
-            <li
+            <Paper
               key={slug}
-              className="rounded border p-4 shadow-sm transition-shadow hover:shadow-md"
+              component="li"
+              withBorder
+              radius="md"
+              p="md"
+              shadow="xs"
+              className="rounded border p-4 shadow-xs transition-shadow hover:shadow-md"
             >
-              {/* Link to the individual project page */}
-              <Link
-                href={`/projects/${slug}`}
-                className="text-xl hover:underline"
-              >
-                {frontMatter.title}
+              <Link href={`/projects/${slug}`} legacyBehavior>
+                <Anchor size="xl" underline="always">
+                  {frontMatter.title}
+                </Anchor>
               </Link>
-
-              {/* Display the project publication date with subtle styling */}
-              <p className="text-sm text-gray-500">{frontMatter.date}</p>
-
-              {/* Display the project description */}
-              <p className="my-2">{frontMatter.description}</p>
-
-              {/* Conditionally display the tech stack if available */}
+              <Text size="sm" c="dimmed">
+                {frontMatter.date}
+              </Text>
+              <Text pb="sm">{frontMatter.description}</Text>
               {frontMatter.tech && (
-                <div className="flex flex-wrap gap-2">
+                <Group gap="xs">
                   {frontMatter.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded bg-gray-200 px-2 py-1 text-sm dark:bg-gray-800"
-                    >
+                    <Badge key={t} variant="light" c="gray" size="xl">
                       {t}
-                    </span>
+                    </Badge>
                   ))}
-                </div>
+                </Group>
               )}
-            </li>
+            </Paper>
           );
         })}
-      </ul>
-    </section>
+      </Stack>
+    </Box>
   );
-}
+};
+
+export default ProjectsIndexPage;
