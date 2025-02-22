@@ -130,7 +130,7 @@ export const MantineProviders = ({ children }: { children: ReactNode }) => {
   }, [colorScheme]);
 
   return (
-    <MantineProvider theme={defaultTheme}>
+    <MantineProvider theme={defaultTheme} defaultColorScheme="auto">
       <ColorSchemeContext.Provider value={{ colorScheme, setColorScheme }}>
         {children}
       </ColorSchemeContext.Provider>
