@@ -1,13 +1,6 @@
 'use client';
 
-import React, {
-  ReactNode,
-  useState,
-  useEffect,
-  createContext,
-  Dispatch,
-  SetStateAction,
-} from 'react';
+import { ReactNode } from 'react';
 import {
   MantineProvider,
   createTheme,
@@ -106,34 +99,10 @@ const defaultTheme = createTheme({
   // Add more theme overrides here if needed
 });
 
-export type ColorScheme = 'light' | 'dark';
-
-interface ColorSchemeContextValue {
-  colorScheme: ColorScheme;
-  setColorScheme: Dispatch<SetStateAction<ColorScheme>>;
-}
-
-export const ColorSchemeContext = createContext<ColorSchemeContextValue>({
-  colorScheme: 'light',
-  setColorScheme: () => {},
-});
-
 export const MantineProviders = ({ children }: { children: ReactNode }) => {
-  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
-
-  useEffect(() => {
-    if (colorScheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [colorScheme]);
-
   return (
     <MantineProvider theme={defaultTheme} defaultColorScheme="auto">
-      <ColorSchemeContext.Provider value={{ colorScheme, setColorScheme }}>
-        {children}
-      </ColorSchemeContext.Provider>
+      {children}
     </MantineProvider>
   );
 };
