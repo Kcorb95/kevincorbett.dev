@@ -15,47 +15,68 @@ import {
   MantineTheme,
 } from '@mantine/core';
 
+/** Create a Mantine theme that mirrors Tailwind’s design tokens */
 const defaultTheme = createTheme({
-  fontFamily: 'var(--font-inter), sans-serif',
-
+  /** Font sizes (xs-xl) aligned with Tailwind’s base-10 rem scale */
   fontSizes: {
-    '7xs': '1px',
-    '6xs': '2px',
-    '5xs': '4px',
-    '4xs': '6px',
-    '3xs': '8px',
-    '2xs': '10px',
-    xs: '12px',
-    sm: '14px',
-    md: '16px',
-    lg: '18px',
-    xl: '20px',
-    '2xl': '24px',
-    '3xl': '30px',
-    '4xl': '36px',
-    '5xl': '48px',
-    '6xl': '60px',
-    '7xl': '72px',
-    '8xl': '96px',
-    '9xl': '128px',
+    '7xs': '0.1rem',
+    '6xs': '0.2rem',
+    '5xs': '0.4rem',
+    '4xs': '0.6rem',
+    '3xs': '0.8rem',
+    '2xs': '1rem',
+    xs: '1.2rem', // 12px
+    sm: '1.4rem', // 14px
+    md: '1.6rem', // 16px
+    lg: '1.8rem', // 18px
+    xl: '2.0rem', // 20px
+    '2xl': '2.4rem',
+    '3xl': '3rem',
+    '4xl': '3.6rem',
+    '5xl': '4.8rem',
+    '6xl': '6rem',
+    '7xl': '7.2rem',
+    '8xl': '9.6rem',
+    '9xl': '12.8rem',
   },
-
+  /** Spacing (xs-xl) using the same values as Tailwind’s spacing scale */
   spacing: {
-    none: '0px',
-    '4xs': '1px',
-    '3xs': '2px',
-    '2xs': '4px',
-    xs: '6px',
-    '2xl': '24px',
-    '3xl': '30px',
-    '4xl': '36px',
-    '5xl': '48px',
-    '6xl': '60px',
-    '7xl': '72px',
-    '8xl': '96px',
-    '9xl': '128px',
+    '6xs': '0.1rem',
+    '5xs': '0.2rem',
+    '4xs': '0.4rem',
+    '3xs': '0.6rem',
+    '2xs': '0.8rem',
+    xs: '1.0rem', // 10px
+    sm: '1.2rem', // 12px
+    md: '1.6rem', // 16px
+    lg: '2.0rem', // 20px
+    xl: '3.2rem', // 32px
+    '2xl': '2.4rem',
+    '3xl': '3rem',
+    '4xl': '3.6rem',
+    '5xl': '4.8rem',
+    '6xl': '6rem',
+    '7xl': '7.2rem',
+    '8xl': '9.6rem',
+    '9xl': '12.8rem',
   },
-
+  /** Border radius (xs-xl) exactly matching Mantine (and Tailwind) values */
+  radius: {
+    xs: '0.125rem', // 2px
+    sm: '0.25rem', // 4px
+    md: '0.5rem', // 8px
+    lg: '1rem', // 16px
+    xl: '2rem', // 32px
+  },
+  defaultRadius: 'sm', // Use 'sm' (4px) as default border radius
+  /** Shadows (xs-xl) identical to Mantine’s default shadows (same as Tailwind’s) */
+  shadows: {
+    xs: '0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1)',
+    sm: '0 1px 3px rgba(0,0,0,0.05), 0 10px 15px -5px rgba(0,0,0,0.05), 0 7px 7px -5px rgba(0,0,0,0.04)',
+    md: '0 1px 3px rgba(0,0,0,0.05), 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.04)',
+    lg: '0 1px 3px rgba(0,0,0,0.05), 0 28px 23px -7px rgba(0,0,0,0.05), 0 12px 12px -7px rgba(0,0,0,0.04)',
+    xl: '0 1px 3px rgba(0,0,0,0.05), 0 36px 28px -7px rgba(0,0,0,0.05), 0 17px 17px -7px rgba(0,0,0,0.04)',
+  },
   components: {
     Button: {
       defaultProps: {

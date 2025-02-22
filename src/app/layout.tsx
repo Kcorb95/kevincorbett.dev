@@ -26,14 +26,6 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
         <MantineProviders>
           <TopNav />
           <main className="mx-auto max-w-[120rem] px-4 py-6">{children}</main>
-          <footer className="mt-8 border-t border-gray-200 py-4 dark:border-gray-700">
-            <div className="mx-auto max-w-[120rem] px-4 text-center">
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                &copy; {new Date().getFullYear()} Kevin Corbett. All rights
-                reserved.
-              </p>
-            </div>
-          </footer>
         </MantineProviders>
         <SpeedInsights />
         <Analytics />
