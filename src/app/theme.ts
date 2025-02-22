@@ -1,15 +1,8 @@
 'use client';
 
-import { ReactNode } from 'react';
-import {
-  MantineProvider,
-  createTheme,
-  TitleProps,
-  MantineTheme,
-} from '@mantine/core';
+import { createTheme, TitleProps, MantineTheme } from '@mantine/core';
 
-/** Create a Mantine theme that mirrors Tailwind’s design tokens */
-const defaultTheme = createTheme({
+export const theme = createTheme({
   /** Font sizes (xs-xl) aligned with Tailwind’s base-10 rem scale */
   fontSizes: {
     '7xs': '0.1rem',
@@ -98,11 +91,3 @@ const defaultTheme = createTheme({
   },
   // Add more theme overrides here if needed
 });
-
-export const MantineProviders = ({ children }: { children: ReactNode }) => {
-  return (
-    <MantineProvider theme={defaultTheme} defaultColorScheme="auto">
-      {children}
-    </MantineProvider>
-  );
-};
