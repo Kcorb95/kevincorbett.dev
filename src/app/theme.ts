@@ -1,8 +1,49 @@
 'use client';
 
-import { createTheme, TitleProps, MantineTheme } from '@mantine/core';
+import {
+  createTheme,
+  TitleProps,
+  MantineTheme,
+  virtualColor,
+} from '@mantine/core';
+import { generateColors } from '@mantine/colors-generator';
 
 export const theme = createTheme({
+  /** Colors (primary, secondary, etc.) */
+  primaryColor: 'primary',
+  colors: {
+    primary: virtualColor({
+      name: 'primary',
+      dark: 'off-white',
+      light: 'off-black',
+    }),
+    'off-white': [
+      '#f5f5f5',
+      '#f5f5f5',
+      '#f5f5f5',
+      '#f5f5f5',
+      '#f5f5f5',
+      '#f5f5f5',
+      '#f5f5f5',
+      '#f5f5f5',
+      '#f5f5f5',
+      '#f5f5f5',
+    ],
+    'off-black': [
+      '#1a1b1e',
+      '#1a1b1e',
+      '#1a1b1e',
+      '#1a1b1e',
+      '#1a1b1e',
+      '#1a1b1e',
+      '#1a1b1e',
+      '#1a1b1e',
+      '#1a1b1e',
+      '#1a1b1e',
+    ],
+    plum: generateColors('#A64D79'),
+  },
+
   /** Font sizes (xs-xl) aligned with Tailwind’s base-10 rem scale */
   fontSizes: {
     '7xs': '0.1rem',

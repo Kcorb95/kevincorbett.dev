@@ -16,16 +16,22 @@ export const ThemeToggle = () => {
   if (!mounted) {
     // Server render: Return a placeholder or nothing (matching minimal HTML).
     return (
-      <ActionIcon variant="default" title="Toggle theme" size="xl"></ActionIcon>
+      <ActionIcon
+        variant="transparent"
+        title="Toggle theme"
+        size="xl"
+        color="primary"
+      ></ActionIcon>
     );
   }
 
   return (
     <ActionIcon
-      variant="default"
+      variant="transparent"
       onClick={toggleColorScheme}
       title="Toggle theme"
       size="xl"
+      color="primary"
     >
       {colorScheme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
     </ActionIcon>
