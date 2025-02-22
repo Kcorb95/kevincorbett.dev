@@ -33,7 +33,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
         <ColorSchemeScript defaultColorScheme="auto" />
       </head>
       <body className="bg-background text-foreground">
-        <MantineProvider theme={theme}>
+        <MantineProvider theme={theme} defaultColorScheme="auto">
           <TopNav />
           <main className="mx-auto max-w-[120rem] px-4 py-6">{children}</main>
         </MantineProvider>
