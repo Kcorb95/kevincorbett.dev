@@ -15,7 +15,9 @@ export const ThemeToggle = () => {
 
   if (!mounted) {
     // Server render: Return a placeholder or nothing (matching minimal HTML).
-    return null;
+    return (
+      <ActionIcon variant="default" title="Toggle theme" size="xl"></ActionIcon>
+    );
   }
 
   return (
