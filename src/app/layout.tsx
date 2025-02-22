@@ -30,7 +30,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang="en" className={inter.className} {...mantineHtmlProps}>
       <head>
-        <ColorSchemeScript />
+        <ColorSchemeScript defaultColorScheme="auto" />
       </head>
       <body className="bg-background text-foreground">
         <MantineProvider theme={theme}>
