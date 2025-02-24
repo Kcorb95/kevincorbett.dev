@@ -9,7 +9,6 @@ import {
   IconBrandLinkedin,
   IconBrandTwitter,
   IconBriefcase2,
-  IconFileCv,
   IconMail,
   IconUser,
   IconUserSquare,
