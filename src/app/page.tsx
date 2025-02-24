@@ -31,8 +31,10 @@ const HomePage = () => {
               width={200}
               height={200}
             />
-            <Text size="lg">Kevin Corbett</Text>
-            <Text size="md">
+            <Text size="xl" fw="700" pb="45">
+              Kevin Corbett
+            </Text>
+            <Text size="md" pb="20">
               Growth obsessed developer with a passion for building innovative
               solutions.
             </Text>
