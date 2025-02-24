@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { Box, Grid, Text, Paper, Stack, Flex, ActionIcon } from '@mantine/core';
 import {
   IconBrandGithub,
@@ -8,6 +9,62 @@ import {
   IconBrandTwitter,
   IconMail,
 } from '@tabler/icons-react';
+import { ReactElement } from 'react';
+
+const PageCard = (
+  icon: ReactElement,
+  text: string,
+  color: string,
+  link: string
+) => {
+  return (
+    <Paper
+      shadow="xs"
+      radius="lg"
+      p="xl"
+      bg={color}
+      component={Link}
+      href={link}
+      className="cursor-pointer transition-transform duration-150 ease-in-out hover:rotate-[1deg]"
+    >
+      <Stack align="left" justify="left" gap="sm">
+        <Box className="">{icon}</Box>
+        <Text size="lg" fw={800}>
+          {text}
+        </Text>
+      </Stack>
+    </Paper>
+  );
+};
+
+const PageGrid = () => {
+  return (
+    <Grid columns={12} gutter="lg" pt="15rem">
+      <Grid.Col span={{ base: 12, md: 4 }}>
+        {PageCard(<IconBrandGithub size={30} />, 'About me', 'plum', '/about')}
+      </Grid.Col>
+      <Grid.Col span={{ base: 12, md: 5 }}>
+        {PageCard(
+          <IconBrandLinkedin size={30} />,
+          'Browse projects',
+          'cyan',
+          '/projects'
+        )}
+      </Grid.Col>
+      <Grid.Col span={{ base: 12, md: 5 }}>
+        {PageCard(
+          <IconBrandTwitter size={30} />,
+          'Read my blog',
+          'green',
+          '/blog'
+        )}
+      </Grid.Col>
+      <Grid.Col span={{ base: 12, md: 4 }}>
+        {PageCard(<IconMail size={30} />, 'See resume', 'purple', '/resume')}
+      </Grid.Col>
+    </Grid>
+  );
+};
 
 const HomePage = () => {
   return (
@@ -97,6 +154,7 @@ const HomePage = () => {
             sequi nemo inventore nobis nam eos consectetur fugit asperiores
             consequatur!
           </Text>
+          <PageGrid />
         </Grid.Col>
       </Grid>
     </Box>
