@@ -1,23 +1,35 @@
 'use client';
 
 import { Flex } from '@mantine/core';
-import { Brand } from './Brand';
 import { NavLinks } from './NavLinks';
 import { ThemeToggle } from './ThemeToggle';
+import { Brand } from './Brand';
 
 /**
- * Full-width top nav:
- * - brand pinned left
- * - nav centered
- * - theme toggle pinned right
+ * Top navigation:
+ * - Brand pinned to far left
+ * - NavLinks + ThemeToggle pinned to far right
  */
 export const TopNav = () => {
   return (
-    <header className="h-[6rem] w-full border-b border-gray-200 p-2 dark:border-gray-700">
+    // Remove left padding so Brand is exactly at the left edge
+    <header className="h-[6rem] w-full p-2">
       <Flex w="100%" h="100%" align="center" justify="space-between">
-        <Brand /> {/* pinned left */}
-        <NavLinks /> {/* could do "mx-auto" or something to center */}
-        <ThemeToggle /> {/* pinned right */}
+        {/* Brand: left edge */}
+        <Brand />
+
+        {/* 
+          Right section: Nav + Theme 
+          Add bottom border to give just this part an underline.
+        */}
+        <Flex
+          gap="md"
+          align="center"
+          //   className="border-b border-gray-300 pb-[0.5rem]"
+        >
+          <NavLinks />
+          <ThemeToggle />
+        </Flex>
       </Flex>
     </header>
   );

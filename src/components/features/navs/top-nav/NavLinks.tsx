@@ -17,7 +17,7 @@ const navItems = [
  */
 export const NavLinks = () => {
   return (
-    <Flex gap="lg" align="center">
+    <Flex gap="md" align="center">
       {navItems.map((item) => (
         <Link key={item.label} href={item.href} className="hover:underline">
           <Text>{item.label}</Text>
