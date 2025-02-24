@@ -4,10 +4,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Box, Grid, Text, Paper, Stack, Flex, ActionIcon } from '@mantine/core';
 import {
+  IconBooks,
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandTwitter,
+  IconBriefcase2,
+  IconFileCv,
   IconMail,
+  IconUser,
+  IconUserSquare,
 } from '@tabler/icons-react';
 import { ReactElement } from 'react';
 
@@ -21,15 +26,16 @@ const PageCard = (
     <Paper
       shadow="xs"
       radius="lg"
-      p="xl"
+      p="lg"
       bg={color}
+      opacity={0.8}
       component={Link}
       href={link}
       className="cursor-pointer transition-transform duration-150 ease-in-out hover:rotate-[1deg]"
     >
-      <Stack align="left" justify="left" gap="sm">
-        <Box className="">{icon}</Box>
-        <Text size="lg" fw={800}>
+      <Stack align="left" justify="left" gap="md" py="1">
+        <Box>{icon}</Box>
+        <Text size="xl" fw={800}>
           {text}
         </Text>
       </Stack>
@@ -39,28 +45,28 @@ const PageCard = (
 
 const PageGrid = () => {
   return (
-    <Grid columns={12} gutter="lg" pt="15rem">
-      <Grid.Col span={{ base: 12, md: 4 }}>
-        {PageCard(<IconBrandGithub size={30} />, 'About me', 'plum', '/about')}
-      </Grid.Col>
+    <Grid columns={12} gutter="lg" pt="10rem" justify="center">
       <Grid.Col span={{ base: 12, md: 5 }}>
+        {PageCard(<IconUser size={35} />, 'About me', 'pink.5', '/about')}
+      </Grid.Col>
+      <Grid.Col span={{ base: 12, md: 6 }}>
         {PageCard(
-          <IconBrandLinkedin size={30} />,
+          <IconBriefcase2 size={35} />,
           'Browse projects',
-          'cyan',
+          'violet.5',
           '/projects'
         )}
       </Grid.Col>
+      <Grid.Col span={{ base: 12, md: 6 }}>
+        {PageCard(<IconBooks size={35} />, 'Read blog', 'teal.6', '/blog')}
+      </Grid.Col>
       <Grid.Col span={{ base: 12, md: 5 }}>
         {PageCard(
-          <IconBrandTwitter size={30} />,
-          'Read my blog',
-          'green',
-          '/blog'
+          <IconUserSquare size={35} />,
+          'See resume',
+          'yellow.6',
+          '/resume'
         )}
-      </Grid.Col>
-      <Grid.Col span={{ base: 12, md: 4 }}>
-        {PageCard(<IconMail size={30} />, 'See resume', 'purple', '/resume')}
       </Grid.Col>
     </Grid>
   );
