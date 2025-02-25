@@ -252,7 +252,7 @@ const WorkExperienceAccordion = () => (
     w="100%"
     chevron={<IconPlus />}
     chevronPosition="right"
-    chevronSize={18}
+    chevronSize={30}
   >
     {workExperience.map((item) => (
       <Accordion.Item value={item.id.toString()} key={item.id}>
