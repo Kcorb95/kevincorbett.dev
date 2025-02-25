@@ -148,13 +148,6 @@ html {
   --color-neutral-900: #151412; /* off-black for text on light mode */
   --color-primary-500: #8c6d1f; /* e.g., a warm accent color (just an example) */
   --color-primary-600: #7c5f1a; /* darker shade for hover */
-  /* ... define other color families as needed (secondary, success, etc.) */
-
-  /* Breakpoints */
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
 }
 
 /* Apply theme colors to body based on Mantine's color scheme */

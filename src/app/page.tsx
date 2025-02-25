@@ -28,19 +28,26 @@ import { JSX } from 'react';
 
 const HomePage = () => {
   return (
-    <Box>
-      <Grid columns={12} align="flex-start" gutter="xl">
-        <Grid.Col
-          span={{ base: 12, md: 4 }}
-          className="sticky top-[5rem] self-start"
-        >
-          <ProfileSection />
-        </Grid.Col>
-        <Grid.Col span={{ base: 12, md: 7 }} offset={{ md: 1 }}>
-          <RightColumn />
-        </Grid.Col>
-      </Grid>
-    </Box>
+    <Grid columns={12} align="flex-start" gutter="xl">
+      {/* LEFT COLUMN */}
+      <Grid.Col
+        span={{ base: 12, lg: 4 }}
+        // Sticky only on large, top offset
+        className="top-[5rem] self-start lg:sticky"
+      >
+        <ProfileSection />
+      </Grid.Col>
+
+      {/* RIGHT COLUMN */}
+      <Grid.Col
+        // Full width at base, 7 columns at md
+        span={{ base: 12, lg: 7 }}
+        // 0 offset at base, 1 offset at md
+        offset={{ base: 0, lg: 1 }}
+      >
+        <RightColumn />
+      </Grid.Col>
+    </Grid>
   );
 };
 export default HomePage;
@@ -92,9 +99,9 @@ const ProfileSocials = () => (
 
 // -- Right Column Content
 const RightColumn = () => (
-  <Stack align="start">
+  <Stack align="stretch">
     <Headline />
-    <Text size="xl" pb="5rem">
+    <Text size="xl" pb="8rem">
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto
       aspernatur quis voluptates ipsum rem et laudantium, dolores iusto quam
       maiores pariatur cum rerum deserunt vitae, eum minima voluptatum nisi
@@ -109,10 +116,10 @@ const RightColumn = () => (
 // -- Headline (“SOFTWARE / ENGINEER”)
 const Headline = () => (
   <Stack gap={0} pb="2rem">
-    <Text size="8xl" fw={700} lh={1}>
+    <Text fz={{ base: '6rem', md: '9rem' }} fw={700} lh={1}>
       SOFTWARE
     </Text>
-    <Text size="8xl" fw={700} lh={1.2} c="plum">
+    <Text fz={{ base: '6rem', md: '9rem' }} fw={700} lh={1.2} c="plum">
       ENGINEER
     </Text>
   </Stack>
@@ -120,11 +127,11 @@ const Headline = () => (
 
 // -- 7 YEARS OF EXPERIENCE
 const ExperienceHeadline = () => (
-  <Stack gap={0} pb="3rem">
-    <Text size="8xl" fw={700} lh={1}>
+  <Stack gap={0} pb="2rem">
+    <Text fz={{ base: '6rem', md: '9rem' }} fw={700} lh={1}>
       7 YEARS OF
     </Text>
-    <Text size="8xl" fw={700} lh={1.2} c="plum">
+    <Text fz={{ base: '6rem', md: '9rem' }} fw={700} lh={1.2} c="plum">
       EXPERIENCE
     </Text>
   </Stack>
@@ -132,8 +139,8 @@ const ExperienceHeadline = () => (
 
 // -- Grid of cards (About, Projects, etc.)
 const PageGrid = () => (
-  <Grid columns={12} gutter="lg" pb="5rem">
-    <Grid.Col span={{ base: 12, md: 5 }}>
+  <Grid columns={12} gutter={{ base: 'sm', md: 'lg' }} pb="8rem">
+    <Grid.Col span={{ base: 5 }}>
       <PageCard
         icon={<IconUser size={35} />}
         text="About me"
@@ -141,7 +148,7 @@ const PageGrid = () => (
         link="/about"
       />
     </Grid.Col>
-    <Grid.Col span={{ base: 12, md: 6 }}>
+    <Grid.Col span={{ base: 7 }}>
       <PageCard
         icon={<IconBriefcase2 size={35} />}
         text="Browse projects"
@@ -149,7 +156,7 @@ const PageGrid = () => (
         link="/projects"
       />
     </Grid.Col>
-    <Grid.Col span={{ base: 12, md: 6 }}>
+    <Grid.Col span={{ base: 7 }}>
       <PageCard
         icon={<IconBooks size={35} />}
         text="Read blog"
@@ -157,7 +164,7 @@ const PageGrid = () => (
         link="/blog"
       />
     </Grid.Col>
-    <Grid.Col span={{ base: 12, md: 5 }}>
+    <Grid.Col span={{ base: 5 }}>
       <PageCard
         icon={<IconUserSquare size={35} />}
         text="Try demos"
@@ -186,13 +193,12 @@ const PageCard = ({
     bg={color}
     component={Link}
     href={link}
-    // We use 10px of padding all around:
-    p="10px"
+    p="1.5rem"
     className="cursor-pointer no-underline transition-transform duration-150 ease-in-out hover:rotate-[1deg]"
   >
     <Stack gap="10px" align="start">
       <Box>{icon}</Box>
-      <Text size="xl" fw={800} className="text-white">
+      <Text fz={{ base: 'lg', md: 'xl' }} fw={800} pb="2rem">
         {text}
       </Text>
     </Stack>
@@ -250,7 +256,7 @@ const WorkExperienceAccordion = () => (
   >
     {workExperience.map((item) => (
       <Accordion.Item value={item.id.toString()} key={item.id}>
-        <Accordion.Control>
+        <Accordion.Control p={0}>
           <Box pb="md">
             <WorkExperienceLabel
               title={item.title}
