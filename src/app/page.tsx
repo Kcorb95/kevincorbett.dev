@@ -2,168 +2,299 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Box, Grid, Text, Paper, Stack, Flex, ActionIcon } from '@mantine/core';
 import {
-  IconBooks,
+  Box,
+  Grid,
+  Text,
+  Paper,
+  Stack,
+  Flex,
+  ActionIcon,
+  Accordion,
+  List,
+} from '@mantine/core';
+import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandTwitter,
-  IconBriefcase2,
   IconMail,
   IconUser,
+  IconBriefcase2,
+  IconBooks,
   IconUserSquare,
+  IconPlus,
 } from '@tabler/icons-react';
-import { ReactElement } from 'react';
-
-const PageCard = (
-  icon: ReactElement,
-  text: string,
-  color: string,
-  link: string
-) => {
-  return (
-    <Paper
-      shadow="xs"
-      radius="lg"
-      p="lg"
-      pb="4rem"
-      bg={color}
-      component={Link}
-      href={link}
-      className="cursor-pointer transition-transform duration-150 ease-in-out hover:rotate-[1deg]"
-    >
-      <Stack align="left" justify="left" gap="md" py="1">
-        <Box>{icon}</Box>
-        <Text size="xl" fw={800}>
-          {text}
-        </Text>
-      </Stack>
-    </Paper>
-  );
-};
-
-const PageGrid = () => {
-  return (
-    <Grid columns={12} gutter="lg" pt="7rem" justify="center">
-      <Grid.Col span={{ base: 12, md: 5 }}>
-        {PageCard(<IconUser size={35} />, 'About me', 'pink', '/about')}
-      </Grid.Col>
-      <Grid.Col span={{ base: 12, md: 6 }}>
-        {PageCard(
-          <IconBriefcase2 size={35} />,
-          'Browse projects',
-          'violet',
-          '/projects'
-        )}
-      </Grid.Col>
-      <Grid.Col span={{ base: 12, md: 6 }}>
-        {PageCard(<IconBooks size={35} />, 'Read blog', 'teal', '/blog')}
-      </Grid.Col>
-      <Grid.Col span={{ base: 12, md: 5 }}>
-        {PageCard(
-          <IconUserSquare size={35} />,
-          'Try demos',
-          'yellow',
-          '/demos'
-        )}
-      </Grid.Col>
-    </Grid>
-  );
-};
+import { JSX } from 'react';
 
 const HomePage = () => {
   return (
-    <Box pb="2.5rem">
+    <Box>
       <Grid columns={12} align="flex-start" gutter="xl">
-        {/* Left Column */}
         <Grid.Col span={{ base: 12, md: 4 }}>
-          <Paper
-            shadow="md"
-            radius="lg"
-            p="xl"
-            component={Stack}
-            justify="center"
-            align="center"
-            ta="center"
-            gap="xs"
-          >
-            <Image
-              src="/memoji_wave.png"
-              alt="memoji of kevin waving"
-              width={200}
-              height={200}
-            />
-            <Text size="xl" fw="700" pb="45">
-              Kevin Corbett
-            </Text>
-            <Text size="md" pb="20">
-              Growth obsessed developer with a passion for building innovative
-              solutions.
-            </Text>
-            <Flex
-              justify="center"
-              align="center"
-              gap="md"
-              direction="row"
-              className="pt-2"
-            >
-              <ActionIcon
-                variant="transparent"
-                size="2xl"
-                color="plum"
-                aria-label="GitHub"
-              >
-                <IconBrandGithub size={28} />
-              </ActionIcon>
-              <ActionIcon
-                variant="transparent"
-                size="2xl"
-                color="plum"
-                aria-label="LinkedIn"
-              >
-                <IconBrandLinkedin size={28} />
-              </ActionIcon>
-              <ActionIcon
-                variant="transparent"
-                size="2xl"
-                color="plum"
-                aria-label="Twitter"
-              >
-                <IconBrandTwitter size={28} />
-              </ActionIcon>
-              <ActionIcon
-                variant="transparent"
-                size="2xl"
-                color="plum"
-                aria-label="Email"
-              >
-                <IconMail size={28} />
-              </ActionIcon>
-            </Flex>
-          </Paper>
+          <ProfileSection />
         </Grid.Col>
-
-        {/* Right Column (offset) */}
         <Grid.Col span={{ base: 12, md: 7 }} offset={{ md: 1 }}>
-          <Stack align="start" gap={0}>
-            <Text size="8xl" fw={700} lh={1}>
-              SOFTWARE
-            </Text>
-            <Text size="8xl" fw={700} lh={1.2} c="plum">
-              ENGINEER
-            </Text>
-          </Stack>
-          <Text size="xl" pt="lg">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. A voluptas
-            neque quod non minima soluta odio ut perspiciatis eius adipisci,
-            sequi nemo inventore nobis nam eos consectetur fugit asperiores
-            consequatur!
-          </Text>
-          <PageGrid />
+          <RightColumn />
         </Grid.Col>
       </Grid>
     </Box>
   );
 };
-
 export default HomePage;
+
+// -- Profile (Left Column)
+const ProfileSection = () => (
+  <Paper shadow="md" radius="lg" p="xl">
+    <Stack gap="md" align="center">
+      <ProfileImage />
+      <ProfileName />
+      <ProfileIntro />
+      <ProfileSocials />
+    </Stack>
+  </Paper>
+);
+
+const ProfileImage = () => (
+  <Image src="/memoji_wave.png" alt="memoji" width={200} height={200} />
+);
+
+const ProfileName = () => (
+  <Text size="xl" fw={700}>
+    Kevin Corbett
+  </Text>
+);
+
+const ProfileIntro = () => (
+  <Text size="md">
+    Growth obsessed developer with a passion for building innovative solutions.
+  </Text>
+);
+
+const ProfileSocials = () => (
+  <Flex justify="center" align="center" gap="md">
+    <ActionIcon variant="transparent" size="2xl" color="plum">
+      <IconBrandGithub size={28} />
+    </ActionIcon>
+    <ActionIcon variant="transparent" size="2xl" color="plum">
+      <IconBrandLinkedin size={28} />
+    </ActionIcon>
+    <ActionIcon variant="transparent" size="2xl" color="plum">
+      <IconBrandTwitter size={28} />
+    </ActionIcon>
+    <ActionIcon variant="transparent" size="2xl" color="plum">
+      <IconMail size={28} />
+    </ActionIcon>
+  </Flex>
+);
+
+// -- Right Column Content
+const RightColumn = () => (
+  <Stack align="start">
+    <Headline />
+    <Text size="xl" pb="5rem">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto
+      aspernatur quis voluptates ipsum rem et laudantium, dolores iusto quam
+      maiores pariatur cum rerum deserunt vitae, eum minima voluptatum nisi
+      tempore?
+    </Text>
+    <PageGrid />
+    <ExperienceHeadline />
+    <WorkExperienceAccordion />
+  </Stack>
+);
+
+// -- Headline (“SOFTWARE / ENGINEER”)
+const Headline = () => (
+  <Stack gap={0} pb="2rem">
+    <Text size="8xl" fw={700} lh={1}>
+      SOFTWARE
+    </Text>
+    <Text size="8xl" fw={700} lh={1.2} c="plum">
+      ENGINEER
+    </Text>
+  </Stack>
+);
+
+// -- 7 YEARS OF EXPERIENCE
+const ExperienceHeadline = () => (
+  <Stack gap={0} pb="3rem">
+    <Text size="8xl" fw={700} lh={1}>
+      7 YEARS OF
+    </Text>
+    <Text size="8xl" fw={700} lh={1.2} c="plum">
+      EXPERIENCE
+    </Text>
+  </Stack>
+);
+
+// -- Grid of cards (About, Projects, etc.)
+const PageGrid = () => (
+  <Grid columns={12} gutter="lg" pb="5rem">
+    <Grid.Col span={{ base: 12, md: 5 }}>
+      <PageCard
+        icon={<IconUser size={35} />}
+        text="About me"
+        color="pink"
+        link="/about"
+      />
+    </Grid.Col>
+    <Grid.Col span={{ base: 12, md: 6 }}>
+      <PageCard
+        icon={<IconBriefcase2 size={35} />}
+        text="Browse projects"
+        color="violet"
+        link="/projects"
+      />
+    </Grid.Col>
+    <Grid.Col span={{ base: 12, md: 6 }}>
+      <PageCard
+        icon={<IconBooks size={35} />}
+        text="Read blog"
+        color="teal"
+        link="/blog"
+      />
+    </Grid.Col>
+    <Grid.Col span={{ base: 12, md: 5 }}>
+      <PageCard
+        icon={<IconUserSquare size={35} />}
+        text="Try demos"
+        color="yellow"
+        link="/demos"
+      />
+    </Grid.Col>
+  </Grid>
+);
+
+// -- Individual card (icon top-left at 10px, text below at left edge)
+const PageCard = ({
+  icon,
+  text,
+  color,
+  link,
+}: {
+  icon: JSX.Element;
+  text: string;
+  color: string;
+  link: string;
+}) => (
+  <Paper
+    shadow="xs"
+    radius="lg"
+    bg={color}
+    component={Link}
+    href={link}
+    // We use 10px of padding all around:
+    p="10px"
+    className="cursor-pointer no-underline transition-transform duration-150 ease-in-out hover:rotate-[1deg]"
+  >
+    <Stack gap="10px" align="start">
+      <Box>{icon}</Box>
+      <Text size="xl" fw={800} className="text-white">
+        {text}
+      </Text>
+    </Stack>
+  </Paper>
+);
+
+// -- Accordion Data
+const workExperience = [
+  {
+    id: 0,
+    title: 'Software Engineer',
+    company: 'Postman',
+    date: '2021 - Present',
+    description:
+      'Full-stack developer on the marketing engineering team. Built numerous tools and applications to help the marketing team scale.',
+    details: ['Built a thing', 'Did another thing', 'Wrote some code'],
+  },
+  {
+    id: 1,
+    title: 'Community Manager',
+    company: 'Postman',
+    date: '2021 - 2024',
+    description:
+      'Responsible for managing the Postman community. Built and ran the community ambassador program.',
+    details: ['Built a thing', 'Did another thing', 'Wrote some code'],
+  },
+  {
+    id: 2,
+    title: 'Community Manager',
+    company: 'GridGain',
+    date: '2020 - 2021',
+    description:
+      'Did some things. Lots of community stuff. All the management.',
+    details: ['Built a thing', 'Did another thing', 'Wrote some code'],
+  },
+  {
+    id: 3,
+    title: 'Software Engineer',
+    company: 'Freelance',
+    date: '2016 - Present',
+    description:
+      'lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto aspernatur quis voluptates ipsum rem et laudantium, dolores iusto quam maiores pariatur cum rerum deserunt vitae, eum minima voluptatum nisi tempore?',
+    details: ['Built a thing', 'Did another thing', 'Wrote some code'],
+  },
+];
+
+// -- Work Experience Accordion
+const WorkExperienceAccordion = () => (
+  <Accordion
+    variant="default"
+    w="100%"
+    chevron={<IconPlus />}
+    chevronPosition="right"
+    chevronSize={18}
+  >
+    {workExperience.map((item) => (
+      <Accordion.Item value={item.id.toString()} key={item.id}>
+        <Accordion.Control>
+          <Box pb="md">
+            <WorkExperienceLabel
+              title={item.title}
+              company={item.company}
+              date={item.date}
+              description={item.description}
+            />
+          </Box>
+        </Accordion.Control>
+        <Accordion.Panel>
+          <List spacing="xs" size="sm" icon={<span>-</span>}>
+            {item.details.map((detail, i) => (
+              <List.Item key={i}>{detail}</List.Item>
+            ))}
+          </List>
+        </Accordion.Panel>
+      </Accordion.Item>
+    ))}
+  </Accordion>
+);
+
+const WorkExperienceLabel = ({
+  title,
+  company,
+  date,
+  description,
+}: {
+  title: string;
+  company: string;
+  date: string;
+  description: string;
+}) => (
+  <Stack gap="sm" pr="xl">
+    {/* Title, Company, Date on the left, so it doesn't clash with the + icon */}
+    <Stack gap={0}>
+      <Text size="xs" c="dimmed">
+        {date}
+      </Text>
+      <Text fw={700}>{title}</Text>
+      <Text size="sm" c="dimmed">
+        {company}
+      </Text>
+    </Stack>
+
+    {/* Add space before the + icon by using pb in Accordion.Control */}
+    <Text size="sm" pr="xl">
+      {description}
+    </Text>
+  </Stack>
+);
