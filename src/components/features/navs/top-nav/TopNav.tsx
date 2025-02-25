@@ -13,7 +13,7 @@ import { Brand } from './Brand';
 export const TopNav = () => {
   return (
     // Remove left padding so Brand is exactly at the left edge
-    <header className="h-[6rem] w-full p-2">
+    <header className="bg-background dark:bg-background-dark sticky top-0 z-50 h-[6rem] w-full p-2">
       <Flex w="100%" h="100%" align="center" justify="space-between">
         {/* Brand: left edge */}
         <Brand />

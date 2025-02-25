@@ -30,7 +30,10 @@ const HomePage = () => {
   return (
     <Box>
       <Grid columns={12} align="flex-start" gutter="xl">
-        <Grid.Col span={{ base: 12, md: 4 }}>
+        <Grid.Col
+          span={{ base: 12, md: 4 }}
+          className="sticky top-[5rem] self-start"
+        >
           <ProfileSection />
         </Grid.Col>
         <Grid.Col span={{ base: 12, md: 7 }} offset={{ md: 1 }}>
