@@ -26,8 +26,8 @@ const PageCard = (
       shadow="xs"
       radius="lg"
       p="lg"
+      pb="4rem"
       bg={color}
-      opacity={0.8}
       component={Link}
       href={link}
       className="cursor-pointer transition-transform duration-150 ease-in-out hover:rotate-[1deg]"
@@ -44,27 +44,27 @@ const PageCard = (
 
 const PageGrid = () => {
   return (
-    <Grid columns={12} gutter="lg" pt="10rem" justify="center">
+    <Grid columns={12} gutter="lg" pt="7rem" justify="center">
       <Grid.Col span={{ base: 12, md: 5 }}>
-        {PageCard(<IconUser size={35} />, 'About me', 'pink.5', '/about')}
+        {PageCard(<IconUser size={35} />, 'About me', 'pink', '/about')}
       </Grid.Col>
       <Grid.Col span={{ base: 12, md: 6 }}>
         {PageCard(
           <IconBriefcase2 size={35} />,
           'Browse projects',
-          'violet.5',
+          'violet',
           '/projects'
         )}
       </Grid.Col>
       <Grid.Col span={{ base: 12, md: 6 }}>
-        {PageCard(<IconBooks size={35} />, 'Read blog', 'teal.6', '/blog')}
+        {PageCard(<IconBooks size={35} />, 'Read blog', 'teal', '/blog')}
       </Grid.Col>
       <Grid.Col span={{ base: 12, md: 5 }}>
         {PageCard(
           <IconUserSquare size={35} />,
-          'See resume',
-          'yellow.6',
-          '/resume'
+          'Try demos',
+          'yellow',
+          '/demos'
         )}
       </Grid.Col>
     </Grid>

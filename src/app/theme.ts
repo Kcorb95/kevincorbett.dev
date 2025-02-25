@@ -9,6 +9,8 @@ import {
 import { generateColors } from '@mantine/colors-generator';
 
 export const theme = createTheme({
+  /* Update scale to match 10px base font size */
+  scale: 1.6,
   /** Colors (primary, secondary, etc.) */
   primaryColor: 'primary',
   colors: {
