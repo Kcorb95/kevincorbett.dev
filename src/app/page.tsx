@@ -421,7 +421,7 @@ const SkillsSection = () => {
   return (
     <Grid columns={12} gutter="md">
       {skillsData.map((skill) => (
-        <Grid.Col key={skill.id} span={{ base: 6, lg: 6 }}>
+        <Grid.Col key={skill.id} span={{ base: 12, lg: 6 }}>
           <SkillCard
             icon={skill.icon}
             name={skill.name}
