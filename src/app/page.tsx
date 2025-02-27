@@ -75,13 +75,13 @@ const ProfileName = () => (
 );
 
 const ProfileIntro = () => (
-  <Text size="md">
+  <Text size="md" ta="center">
     Growth obsessed developer with a passion for building innovative solutions.
   </Text>
 );
 
 const ProfileSocials = () => (
-  <Flex justify="center" align="center" gap="md">
+  <Flex justify="center" align="center" gap="md" pt="1rem">
     <ActionIcon variant="transparent" size="2xl" color="plum">
       <IconBrandGithub size={28} />
     </ActionIcon>
@@ -253,6 +253,15 @@ const WorkExperienceAccordion = () => (
     chevron={<IconPlus />}
     chevronPosition="right"
     chevronSize={30}
+    styles={{
+      // Remove hover background on both item and control
+      item: {
+        backgroundColor: 'transparent',
+      },
+      control: {
+        backgroundColor: 'transparent',
+      },
+    }}
   >
     {workExperience.map((item) => (
       <Accordion.Item value={item.id.toString()} key={item.id}>
