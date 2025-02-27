@@ -370,7 +370,7 @@ interface SkillCardProps {
 
 const SkillCard = ({ icon, name, category, details }: SkillCardProps) => {
   return (
-    <HoverCard width={250} shadow="md" closeDelay={100}>
+    <HoverCard shadow="md" closeDelay={100}>
       <HoverCard.Target>
         {/* The “outer” card that shows icon + text */}
         <Paper
@@ -406,7 +406,7 @@ const SkillsSection = () => {
   return (
     <Grid columns={12} gutter="md">
       {skillsData.map((skill) => (
-        <Grid.Col key={skill.id} span={{ sm: 6, md: 4 }}>
+        <Grid.Col key={skill.id} span={{ base: 6, lg: 4, xl: 4 }}>
           <SkillCard
             icon={skill.icon}
             name={skill.name}
