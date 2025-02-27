@@ -12,6 +12,8 @@ import {
   ActionIcon,
   Accordion,
   List,
+  Tooltip,
+  HoverCard,
 } from '@mantine/core';
 import {
   IconBrandGithub,
@@ -23,8 +25,11 @@ import {
   IconBooks,
   IconUserSquare,
   IconPlus,
+  IconBrandReact,
+  IconBrandNodejs,
+  IconBrandCss3,
 } from '@tabler/icons-react';
-import { JSX } from 'react';
+import { JSX, ReactNode } from 'react';
 
 const HomePage = () => {
   return (
@@ -110,6 +115,8 @@ const RightColumn = () => (
     <PageGrid />
     <ExperienceHeadline />
     <WorkExperienceAccordion />
+    <SkillsHeadline />
+    <SkillsSection />
   </Stack>
 );
 
@@ -133,6 +140,17 @@ const ExperienceHeadline = () => (
     </Text>
     <Text fz={{ base: '6rem', md: '9rem' }} fw={700} lh={1.2} c="plum">
       EXPERIENCE
+    </Text>
+  </Stack>
+);
+
+const SkillsHeadline = () => (
+  <Stack gap={0} pb="2rem">
+    <Text fz={{ base: '6rem', md: '9rem' }} fw={700} lh={1}>
+      MY
+    </Text>
+    <Text fz={{ base: '6rem', md: '9rem' }} fw={700} lh={1.2} c="plum">
+      SKILLS
     </Text>
   </Stack>
 );
@@ -262,6 +280,7 @@ const WorkExperienceAccordion = () => (
         backgroundColor: 'transparent',
       },
     }}
+    pb="8rem"
   >
     {workExperience.map((item) => (
       <Accordion.Item value={item.id.toString()} key={item.id}>
@@ -316,3 +335,86 @@ const WorkExperienceLabel = ({
     </Text>
   </Stack>
 );
+
+const skillsData = [
+  {
+    id: 'react',
+    name: 'React',
+    category: 'Frontend',
+    icon: <IconBrandReact size={40} />,
+    details: 'A JavaScript library for building user interfaces',
+  },
+  {
+    id: 'nodejs',
+    name: 'Node.js',
+    category: 'Backend',
+    icon: <IconBrandNodejs size={40} />,
+    details: 'A runtime environment for executing JavaScript outside a browser',
+  },
+  {
+    id: 'css',
+    name: 'CSS3',
+    category: 'Frontend',
+    icon: <IconBrandCss3 size={40} />,
+    details: 'Used to style HTML documents with layout and design',
+  },
+  // ...
+];
+
+interface SkillCardProps {
+  icon: ReactNode; // e.g. <IconBrandReact ... />
+  name: string; // e.g. "React"
+  category: string; // e.g. "Frontend"
+  details: string; // shown in tooltip
+}
+
+const SkillCard = ({ icon, name, category, details }: SkillCardProps) => {
+  return (
+    <HoverCard width={250} shadow="md" closeDelay={100}>
+      <HoverCard.Target>
+        {/* The “outer” card that shows icon + text */}
+        <Paper
+          radius="lg"
+          p="md"
+          className="cursor-pointer transition-transform duration-150 ease-in-out hover:scale-[1.02]"
+        >
+          <Flex align="center" gap="md">
+            {/* Icon on the left */}
+            {icon}
+            <Stack gap={2}>
+              {/* Bold name */}
+              <Text fw={700} fz="md" lh={1.2}>
+                {name}
+              </Text>
+              {/* Category below */}
+              <Text c="dimmed" fz="sm">
+                {category}
+              </Text>
+            </Stack>
+          </Flex>
+        </Paper>
+      </HoverCard.Target>
+
+      <HoverCard.Dropdown>
+        <Text size="sm">{details}</Text>
+      </HoverCard.Dropdown>
+    </HoverCard>
+  );
+};
+
+const SkillsSection = () => {
+  return (
+    <Grid columns={12} gutter="md">
+      {skillsData.map((skill) => (
+        <Grid.Col key={skill.id} span={{ sm: 6, md: 4 }}>
+          <SkillCard
+            icon={skill.icon}
+            name={skill.name}
+            category={skill.category}
+            details={skill.details}
+          />
+        </Grid.Col>
+      ))}
+    </Grid>
+  );
+};
