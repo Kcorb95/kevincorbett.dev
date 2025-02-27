@@ -12,7 +12,6 @@ import {
   ActionIcon,
   Accordion,
   List,
-  Tooltip,
   HoverCard,
 } from '@mantine/core';
 import {
