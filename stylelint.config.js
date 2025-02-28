@@ -20,5 +20,17 @@ module.exports = {
     ],
     'custom-property-pattern': null,
   },
-  ignoreFiles: ['**/*.{js,jsx,ts,tsx}'],
+  ignoreFiles: [
+    '**/*.{js,jsx,ts,tsx}',
+    '**/*.min.css',
+    '.*cache/',
+    '.github/',
+    '.next/',
+    '.vercel/',
+    '.vscode/',
+    'build/',
+    'dist/',
+    'node_modules/',
+    'public/',
+  ],
 };
