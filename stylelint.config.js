@@ -1,26 +1,24 @@
 module.exports = {
-  // Use recommended configs from stylelint, standard CSS, and Tailwind.
-  // Prettier config last so it can override conflicting rules.
-  extends: [
-    'stylelint-config-standard',
-    'stylelint-config-tailwindcss',
-    'stylelint-config-prettier',
-  ],
-
+  extends: ['stylelint-config-standard', 'stylelint-config-tailwindcss'],
+  plugins: ['stylelint-order'],
   rules: {
-    // override/add stylelint rules here.
+    'order/properties-alphabetical-order': null,
+    'at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: [
+          'tailwind',
+          'apply',
+          'variants',
+          'responsive',
+          'screen',
+          'plugin',
+          'custom-variant',
+          'theme',
+        ],
+      },
+    ],
+    'custom-property-pattern': null,
   },
-
-  ignoreFiles: [
-    '**/*.min.css',
-    '.*cache/',
-    '.github/',
-    '.next/',
-    '.vercel/',
-    '.vscode/',
-    'build/',
-    'dist/',
-    'node_modules/',
-    'public/',
-  ],
+  ignoreFiles: ['**/*.{js,jsx,ts,tsx}'],
 };

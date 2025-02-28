@@ -8,10 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"**/*.{js,ts,tsx,md,mdx,json}\"",
+    "lint:css": "stylelint \"**/*.{css,scss}\"",
+    "format": "prettier --write \"**/*.{js,ts,tsx,css,md,mdx,json}\"",
     "reset": "rm -rf node_modules .next .eslintcache .cache package-lock.json pnpm-lock.yaml && pnpm install",
-    "nvmrc": "echo $(node -p -e 'require(\"./package\").engines.node.split(\">=\").join(\"\")') > .nvmrc",
-    "prepare": "husky install"
+    "nvmrc": "echo $(node -p -e 'require(\"./package\").engines.node.split(\">=\").join(\"\")') > .nvmrc"
   },
   "dependencies": {
     "@mantine/colors-generator": "7.17.0",
@@ -50,9 +50,9 @@
     "prettier": "3.5.2",
     "prettier-plugin-tailwindcss": "0.6.11",
     "stylelint": "16.15.0",
-    "stylelint-config-prettier": "9.0.5",
     "stylelint-config-standard": "37.0.0",
     "stylelint-config-tailwindcss": "1.0.0",
+    "stylelint-order": "6.0.4",
     "tailwindcss": "4.0.9",
     "tailwindcss-animate": "1.0.7",
     "typescript": "5.8.2"

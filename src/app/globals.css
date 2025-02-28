@@ -21,10 +21,9 @@ html {
   /* Dark theme colors */
   --color-background-dark: #1a1b1e; /* Off-black background */
   --color-text-dark: #f5f5f5; /* Off-white text */
-
   --font-sans:
-    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', Helvetica, Arial, sans-serif;
+    system-ui, -apple-system, blinkmacsystemfont, 'Segoe UI', oxygen, ubuntu,
+    cantarell, 'Fira Sans', 'Droid Sans', helvetica, arial, sans-serif;
   --font-mono: 'Fira Code', monospace;
 
   /* Typography Scale (font sizes) */
@@ -128,19 +127,19 @@ html {
   --radius-full: 9999px;
 
   /* Shadows (box-shadow utilities) */
-  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-xs: 0 1px 3px rgb(0 0 0 / 5%), 0 1px 2px rgb(0 0 0 / 10%);
   --shadow-sm:
-    0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 15px -5px rgba(0, 0, 0, 0.05),
-    0 7px 7px -5px rgba(0, 0, 0, 0.04);
+    0 1px 3px rgb(0 0 0 / 5%), 0 10px 15px -5px rgb(0 0 0 / 5%),
+    0 7px 7px -5px rgb(0 0 0 / 4%);
   --shadow-md:
-    0 1px 3px rgba(0, 0, 0, 0.05), 0 20px 25px -5px rgba(0, 0, 0, 0.05),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    0 1px 3px rgb(0 0 0 / 5%), 0 20px 25px -5px rgb(0 0 0 / 5%),
+    0 10px 10px -5px rgb(0 0 0 / 4%);
   --shadow-lg:
-    0 1px 3px rgba(0, 0, 0, 0.05), 0 28px 23px -7px rgba(0, 0, 0, 0.05),
-    0 12px 12px -7px rgba(0, 0, 0, 0.04);
+    0 1px 3px rgb(0 0 0 / 5%), 0 28px 23px -7px rgb(0 0 0 / 5%),
+    0 12px 12px -7px rgb(0 0 0 / 4%);
   --shadow-xl:
-    0 1px 3px rgba(0, 0, 0, 0.05), 0 36px 28px -7px rgba(0, 0, 0, 0.05),
-    0 17px 17px -7px rgba(0, 0, 0, 0.04);
+    0 1px 3px rgb(0 0 0 / 5%), 0 36px 28px -7px rgb(0 0 0 / 5%),
+    0 17px 17px -7px rgb(0 0 0 / 4%);
 
   /* Color Palette – define pastel off-white, off-black, and accents */
   --color-neutral-0: #f9f5f2; /* warm off-white */

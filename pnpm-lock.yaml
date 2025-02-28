@@ -111,15 +111,15 @@ importers:
       stylelint:
         specifier: 16.15.0
         version: 16.15.0(typescript@5.8.2)
-      stylelint-config-prettier:
-        specifier: 9.0.5
-        version: 9.0.5(stylelint@16.15.0(typescript@5.8.2))
       stylelint-config-standard:
         specifier: 37.0.0
         version: 37.0.0(stylelint@16.15.0(typescript@5.8.2))
       stylelint-config-tailwindcss:
         specifier: 1.0.0
         version: 1.0.0(stylelint@16.15.0(typescript@5.8.2))(tailwindcss@4.0.9)
+      stylelint-order:
+        specifier: 6.0.4
+        version: 6.0.4(stylelint@16.15.0(typescript@5.8.2))
       tailwindcss:
         specifier: 4.0.9
         version: 4.0.9
@@ -2257,6 +2257,11 @@ packages:
     resolution: {integrity: sha512-8sLjZwK0R+JlxlYcTuVnyT2v+htpdrjDOKuMcOVdYjt52Lh8hWRYpxBPoKx/Zg+bcjc3wx6fmQevMmUztS/ccA==}
     engines: {node: '>=4'}
 
+  postcss-sorting@8.0.2:
+    resolution: {integrity: sha512-M9dkSrmU00t/jK7rF6BZSZauA5MAaBW4i5EnJXspMwt4iqTh/L9j6fgMnbElEOfyRyfLfVbIHj/R52zHzAPe1Q==}
+    peerDependencies:
+      postcss: ^8.4.20
+
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
 
@@ -2666,13 +2671,6 @@ packages:
       babel-plugin-macros:
         optional: true
 
-  stylelint-config-prettier@9.0.5:
-    resolution: {integrity: sha512-U44lELgLZhbAD/xy/vncZ2Pq8sh2TnpiPvo38Ifg9+zeioR+LAkHu0i6YORIOxFafZoVg0xqQwex6e6F25S5XA==}
-    engines: {node: '>= 12'}
-    hasBin: true
-    peerDependencies:
-      stylelint: '>= 11.x < 15'
-
   stylelint-config-recommended@15.0.0:
     resolution: {integrity: sha512-9LejMFsat7L+NXttdHdTq94byn25TD+82bzGRiV1Pgasl99pWnwipXS5DguTpp3nP1XjvLXVnEJIuYBfsRjRkA==}
     engines: {node: '>=18.12.0'}
@@ -2690,6 +2688,11 @@ packages:
     peerDependencies:
       stylelint: '>=13.13.1'
       tailwindcss: '>=2.2.16'
+
+  stylelint-order@6.0.4:
+    resolution: {integrity: sha512-0UuKo4+s1hgQ/uAxlYU4h0o0HS4NiQDud0NAUNI0aa8FJdmYHA5ZZTFHiV5FpmE3071e9pZx5j0QpVJW5zOCUA==}
+    peerDependencies:
+      stylelint: ^14.0.0 || ^15.0.0 || ^16.0.1
 
   stylelint@16.15.0:
     resolution: {integrity: sha512-OK6Rs7EPdcdmjqiDycadZY4fw3f5/TC1X6/tGjnF3OosbwCeNs7nG+79MCAtjEg7ckwqTJTsku08e0Rmaz5nUw==}
@@ -5407,6 +5410,10 @@ snapshots:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
 
+  postcss-sorting@8.0.2(postcss@8.5.3):
+    dependencies:
+      postcss: 8.5.3
+
   postcss-value-parser@4.2.0: {}
 
   postcss@8.4.31:
@@ -5856,10 +5863,6 @@ snapshots:
       client-only: 0.0.1
       react: 19.0.0
 
-  stylelint-config-prettier@9.0.5(stylelint@16.15.0(typescript@5.8.2)):
-    dependencies:
-      stylelint: 16.15.0(typescript@5.8.2)
-
   stylelint-config-recommended@15.0.0(stylelint@16.15.0(typescript@5.8.2)):
     dependencies:
       stylelint: 16.15.0(typescript@5.8.2)
@@ -5873,6 +5876,12 @@ snapshots:
     dependencies:
       stylelint: 16.15.0(typescript@5.8.2)
       tailwindcss: 4.0.9
+
+  stylelint-order@6.0.4(stylelint@16.15.0(typescript@5.8.2)):
+    dependencies:
+      postcss: 8.5.3
+      postcss-sorting: 8.0.2(postcss@8.5.3)
+      stylelint: 16.15.0(typescript@5.8.2)
 
   stylelint@16.15.0(typescript@5.8.2):
     dependencies:
