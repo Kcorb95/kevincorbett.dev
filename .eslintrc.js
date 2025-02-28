@@ -12,6 +12,7 @@ module.exports = {
     'node_modules/',
     'public/',
     'package-lock.json',
+    'pnpm-lock.yaml',
   ],
   extends: [
     'next/core-web-vitals',
