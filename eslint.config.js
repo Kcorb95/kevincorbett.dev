@@ -1,6 +1,11 @@
-module.exports = {
+import { FlatCompat } from '@eslint/eslintrc';
+
+const compat = new FlatCompat({
+  baseDirectory: process.cwd(),
+});
+
+const oldEslintrcLikeConfig = {
   ignorePatterns: [
-    '**/*.css',
     '*.min.{js,jsx,ts,tsx}',
     '.*cache/',
     '.github/',
@@ -35,3 +40,5 @@ module.exports = {
     'prettier/prettier': 'warn',
   },
 };
+
+export default [...compat.config(oldEslintrcLikeConfig)];
