@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { readMdxContent, getAllSlugs } from '@/lib/mdx';
-import { Box, Title, Text, TypographyStylesProvider } from '@mantine/core';
+import { Box, Title, Text } from '@mantine/core';
+import { MdxContent } from '@/components/features/mdx/MdxContent';
 
 export async function generateStaticParams() {
   const slugs = getAllSlugs('blogs');
@@ -31,9 +32,9 @@ const BlogPostPage = async (props: BlogPostProps) => {
       <Text size="sm" c="dimmed">
         {data.date}
       </Text>
-      <TypographyStylesProvider>
+      <MdxContent>
         <MDXRemote source={content} />
-      </TypographyStylesProvider>
+      </MdxContent>
     </Box>
   );
 };

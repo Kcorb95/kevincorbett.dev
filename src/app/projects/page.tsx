@@ -37,11 +37,14 @@ const ProjectsIndexPage = () => {
               shadow="xs"
               className="rounded border p-4 shadow-xs transition-shadow hover:shadow-md"
             >
-              <Link href={`/projects/${slug}`} legacyBehavior>
-                <Anchor size="xl" underline="always">
-                  {frontMatter.title}
-                </Anchor>
-              </Link>
+              <Anchor
+                component={Link}
+                href={`/projects/${slug}`}
+                size="xl"
+                underline="always"
+              >
+                {frontMatter.title}
+              </Anchor>
               <Text size="sm" c="dimmed">
                 {frontMatter.date}
               </Text>

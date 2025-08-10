@@ -21,12 +21,13 @@ const BlogIndexPage = () => {
           const { slug, frontMatter } = item;
           return (
             <Box component="li" key={slug}>
-              <Link href={`/blog/${slug}`} legacyBehavior>
-                {/* No Mantine equivalent for hover:underline & text-xl exists, so we use a className */}
-                <Anchor className="text-xl hover:underline">
-                  {frontMatter.title}
-                </Anchor>
-              </Link>
+              <Anchor
+                component={Link}
+                href={`/blog/${slug}`}
+                className="text-xl hover:underline"
+              >
+                {frontMatter.title}
+              </Anchor>
               <Text size="sm" c="dimmed">
                 {frontMatter.date}
               </Text>
