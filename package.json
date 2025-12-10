@@ -11,7 +11,9 @@
     "lint:css": "stylelint \"**/*.{css,scss}\"",
     "format": "prettier --write \"**/*.{js,ts,tsx,css,md,mdx,json}\"",
     "reset": "rm -rf node_modules .next .eslintcache .cache package-lock.json pnpm-lock.yaml && pnpm install",
-    "nvmrc": "echo $(node -p -e 'require(\"./package\").engines.node.split(\">=\").join(\"\")') > .nvmrc"
+    "nvmrc": "echo $(node -p -e 'require(\"./package\").engines.node.split(\">=\").join(\"\")') > .nvmrc",
+    "test": "vitest",
+    "test:watch": "vitest --watch"
   },
   "dependencies": {
     "@mantine/colors-generator": "7.17.0",
@@ -55,7 +57,10 @@
     "stylelint-order": "6.0.4",
     "tailwindcss": "4.0.9",
     "tailwindcss-animate": "1.0.7",
-    "typescript": "5.8.2"
+    "typescript": "5.8.2",
+    "vitest": "1.5.3",
+    "@testing-library/react": "14.1.2",
+    "@testing-library/jest-dom": "6.4.2"
   },
   "engines": {
     "node": ">=22.13.0"
