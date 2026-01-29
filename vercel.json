@@ -1,10 +1,15 @@
 {
-  "installCommand": "pnpm install",
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
-  "nodeVersion": "24.x",
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm build",
+  "devCommand": "pnpm dev",
+  "outputDirectory": ".next",
+  "regions": ["iad1"],
   "functions": {
     "**/*": {
-      "fluid": true
+      "memory": 1024,
+      "maxDuration": 30
     }
   }
 }
