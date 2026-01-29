@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import matter from 'gray-matter';
 
 export interface FrontMatter {
@@ -17,9 +17,7 @@ interface MdxMetaItem {
   frontMatter: FrontMatter;
 }
 
-export const listAllMdxMeta = (
-  contentType: 'blogs' | 'projects'
-): MdxMetaItem[] => {
+export const listAllMdxMeta = (contentType: 'blogs' | 'projects'): MdxMetaItem[] => {
   const baseDir = path.join(process.cwd(), 'src/content', contentType);
   if (!fs.existsSync(baseDir)) {
     return [];
@@ -46,12 +44,9 @@ export const getAllSlugs = (contentType: 'blogs' | 'projects'): string[] => {
     .map((f) => f.replace(/\.mdx$/, ''));
 };
 
-export const readMdxContent = (
-  contentType: 'blogs' | 'projects',
-  slug: string
-) => {
+export const readMdxContent = (contentType: 'blogs' | 'projects', slug: string) => {
   const baseDir = path.join(process.cwd(), 'src/content', contentType);
-  const filePath = path.join(baseDir, slug + '.mdx');
+  const filePath = path.join(baseDir, `${slug}.mdx`);
 
   if (!fs.existsSync(filePath)) {
     return null;

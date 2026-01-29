@@ -1,197 +1,169 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
 import {
-  Box,
-  Grid,
-  Text,
-  Paper,
-  Stack,
-  Flex,
-  ActionIcon,
-  Accordion,
-  List,
-  HoverCard,
-} from '@mantine/core';
-import {
+  IconBooks,
+  IconBrandAws,
+  IconBrandCss3,
   IconBrandGithub,
   IconBrandLinkedin,
+  IconBrandNextjs,
+  IconBrandNodejs,
+  IconBrandReact,
   IconBrandTwitter,
+  IconBriefcase2,
   IconMail,
   IconUser,
-  IconBriefcase2,
-  IconBooks,
   IconUserSquare,
-  IconPlus,
-  IconBrandReact,
-  IconBrandNodejs,
-  IconBrandCss3,
-  IconBrandNextjs,
-  IconBrandAws,
 } from '@tabler/icons-react';
-import { JSX, ReactNode } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import type { JSX, ReactNode } from 'react';
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 
 const HomePage = () => {
   return (
-    <Grid columns={12} align="flex-start" gutter="xl">
+    <div className="grid grid-cols-12 items-start gap-[3.2rem]">
       {/* LEFT COLUMN */}
-      <Grid.Col
-        span={{ base: 12, lg: 4 }}
-        // Sticky only on large, top offset
-        className="top-[5rem] self-start lg:sticky"
-      >
+      <div className="col-span-12 self-start lg:sticky lg:top-[5rem] lg:col-span-4">
         <ProfileSection />
-      </Grid.Col>
+      </div>
 
       {/* RIGHT COLUMN */}
-      <Grid.Col
-        // Full width at base, 7 columns at md
-        span={{ base: 12, lg: 7 }}
-        // 0 offset at base, 1 offset at md
-        offset={{ base: 0, lg: 1 }}
-      >
+      <div className="col-span-12 lg:col-span-7 lg:col-start-6">
         <RightColumn />
-      </Grid.Col>
-    </Grid>
+      </div>
+    </div>
   );
 };
 export default HomePage;
 
 // -- Profile (Left Column)
 const ProfileSection = () => (
-  <Paper shadow="md" radius="lg" p="xl">
-    <Stack gap="md" align="center">
+  <div className="rounded-lg bg-card p-[3.2rem] shadow-md">
+    <div className="flex flex-col items-center gap-[1.6rem]">
       <ProfileImage />
       <ProfileName />
       <ProfileIntro />
       <ProfileSocials />
-    </Stack>
-  </Paper>
+    </div>
+  </div>
 );
 
-const ProfileImage = () => (
-  <Image src="/memoji_wave.png" alt="memoji" width={200} height={200} />
-);
+const ProfileImage = () => <Image src="/memoji_wave.png" alt="memoji" width={200} height={200} />;
 
-const ProfileName = () => (
-  <Text size="xl" fw={700}>
-    Kevin Corbett
-  </Text>
-);
+const ProfileName = () => <p className="text-20 font-bold">Kevin Corbett</p>;
 
 const ProfileIntro = () => (
-  <Text size="md" ta="center">
+  <p className="text-center text-16">
     Growth obsessed developer with a passion for building innovative solutions.
-  </Text>
+  </p>
 );
 
 const ProfileSocials = () => (
-  <Flex justify="center" align="center" gap="md" pt="1rem">
-    <ActionIcon variant="transparent" size="2xl" color="plum">
+  <div className="flex items-center justify-center gap-[1rem] pt-[1rem]">
+    <button
+      type="button"
+      className="inline-flex h-[4rem] w-[4rem] cursor-pointer items-center justify-center rounded-md text-plum"
+    >
       <IconBrandGithub size={28} />
-    </ActionIcon>
-    <ActionIcon variant="transparent" size="2xl" color="plum">
+    </button>
+    <button
+      type="button"
+      className="inline-flex h-[4rem] w-[4rem] cursor-pointer items-center justify-center rounded-md text-plum"
+    >
       <IconBrandLinkedin size={28} />
-    </ActionIcon>
-    <ActionIcon variant="transparent" size="2xl" color="plum">
+    </button>
+    <button
+      type="button"
+      className="inline-flex h-[4rem] w-[4rem] cursor-pointer items-center justify-center rounded-md text-plum"
+    >
       <IconBrandTwitter size={28} />
-    </ActionIcon>
-    <ActionIcon variant="transparent" size="2xl" color="plum">
+    </button>
+    <button
+      type="button"
+      className="inline-flex h-[4rem] w-[4rem] cursor-pointer items-center justify-center rounded-md text-plum"
+    >
       <IconMail size={28} />
-    </ActionIcon>
-  </Flex>
+    </button>
+  </div>
 );
 
 // -- Right Column Content
 const RightColumn = () => (
-  <Stack align="stretch">
+  <div className="flex flex-col">
     <Headline />
-    <Text size="xl" pb="8rem">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto
-      aspernatur quis voluptates ipsum rem et laudantium, dolores iusto quam
-      maiores pariatur cum rerum deserunt vitae, eum minima voluptatum nisi
-      tempore?
-    </Text>
+    <p className="pb-[8rem] text-20">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto aspernatur quis
+      voluptates ipsum rem et laudantium, dolores iusto quam maiores pariatur cum rerum deserunt
+      vitae, eum minima voluptatum nisi tempore?
+    </p>
     <PageGrid />
     <ExperienceHeadline />
     <WorkExperienceAccordion />
     <SkillsHeadline />
     <SkillsSection />
-  </Stack>
+  </div>
 );
 
-// -- Headline (“SOFTWARE / ENGINEER”)
+// -- Headline ("SOFTWARE / ENGINEER")
 const Headline = () => (
-  <Stack gap={0} pb="2rem">
-    <Text fz={{ base: '6rem', md: '9rem' }} fw={700} lh={1}>
-      SOFTWARE
-    </Text>
-    <Text fz={{ base: '6rem', md: '9rem' }} fw={700} lh={1.2} c="plum">
-      ENGINEER
-    </Text>
-  </Stack>
+  <div className="flex flex-col gap-0 pb-[2rem]">
+    <p className="text-60 font-bold leading-tight md:text-96">SOFTWARE</p>
+    <p className="text-60 font-bold leading-snug text-plum md:text-96">ENGINEER</p>
+  </div>
 );
 
 // -- 7 YEARS OF EXPERIENCE
 const ExperienceHeadline = () => (
-  <Stack gap={0} pb="2rem">
-    <Text fz={{ base: '6rem', md: '9rem' }} fw={700} lh={1}>
-      7 YEARS OF
-    </Text>
-    <Text fz={{ base: '6rem', md: '9rem' }} fw={700} lh={1.2} c="plum">
-      EXPERIENCE
-    </Text>
-  </Stack>
+  <div className="flex flex-col gap-0 pb-[2rem]">
+    <p className="text-60 font-bold leading-tight md:text-96">7 YEARS OF</p>
+    <p className="text-60 font-bold leading-snug text-plum md:text-96">EXPERIENCE</p>
+  </div>
 );
 
 const SkillsHeadline = () => (
-  <Stack gap={0} pb="2rem">
-    <Text fz={{ base: '6rem', md: '9rem' }} fw={700} lh={1}>
-      MY
-    </Text>
-    <Text fz={{ base: '6rem', md: '9rem' }} fw={700} lh={1.2} c="plum">
-      SKILLS
-    </Text>
-  </Stack>
+  <div className="flex flex-col gap-0 pb-[2rem]">
+    <p className="text-60 font-bold leading-tight md:text-96">MY</p>
+    <p className="text-60 font-bold leading-snug text-plum md:text-96">SKILLS</p>
+  </div>
 );
+
+// Color mapping for PageCard - muted colors defined in globals.css
+const colorMap: Record<string, string> = {
+  pink: 'bg-[var(--color-bento-pink)]',
+  violet: 'bg-[var(--color-bento-violet)]',
+  teal: 'bg-[var(--color-bento-teal)]',
+  amber: 'bg-[var(--color-bento-amber)]',
+};
 
 // -- Grid of cards (About, Projects, etc.)
 const PageGrid = () => (
-  <Grid columns={12} gutter={{ base: 'sm', md: 'lg' }} pb="8rem">
-    <Grid.Col span={{ base: 5 }}>
-      <PageCard
-        icon={<IconUser size={35} />}
-        text="About me"
-        color="pink"
-        link="/about"
-      />
-    </Grid.Col>
-    <Grid.Col span={{ base: 7 }}>
+  <div className="grid grid-cols-12 gap-[1.2rem] pb-[8rem] md:gap-[2rem]">
+    <div className="col-span-5">
+      <PageCard icon={<IconUser size={35} />} text="About me" color="pink" link="/about" />
+    </div>
+    <div className="col-span-7">
       <PageCard
         icon={<IconBriefcase2 size={35} />}
         text="Browse projects"
         color="violet"
         link="/projects"
       />
-    </Grid.Col>
-    <Grid.Col span={{ base: 7 }}>
-      <PageCard
-        icon={<IconBooks size={35} />}
-        text="Read blog"
-        color="teal"
-        link="/blog"
-      />
-    </Grid.Col>
-    <Grid.Col span={{ base: 5 }}>
-      <PageCard
-        icon={<IconUserSquare size={35} />}
-        text="Try demos"
-        color="yellow"
-        link="/demos"
-      />
-    </Grid.Col>
-  </Grid>
+    </div>
+    <div className="col-span-7">
+      <PageCard icon={<IconBooks size={35} />} text="Read blog" color="teal" link="/blog" />
+    </div>
+    <div className="col-span-5">
+      <PageCard icon={<IconUserSquare size={35} />} text="Try demos" color="amber" link="/demos" />
+    </div>
+  </div>
 );
 
 // -- Individual card (icon top-left at 10px, text below at left edge)
@@ -203,25 +175,20 @@ const PageCard = ({
 }: {
   icon: JSX.Element;
   text: string;
-  color: string;
+  color: keyof typeof colorMap;
   link: string;
 }) => (
-  <Paper
-    shadow="xs"
-    radius="lg"
-    bg={color}
-    component={Link}
+  <Link
     href={link}
-    p="1.5rem"
-    className="cursor-pointer no-underline transition-transform duration-150 ease-in-out hover:rotate-[1deg]"
+    className={`card-hover block cursor-pointer rounded-lg p-[1.5rem] shadow-xs ${colorMap[color]}`}
   >
-    <Stack gap="10px" align="start">
-      <Box>{icon}</Box>
-      <Text fz={{ base: 'lg', md: 'xl' }} fw={800} pb="2rem">
+    <div className="flex flex-col items-start gap-[1rem]">
+      <div>{icon}</div>
+      <p className="pb-[2rem] text-18 font-extrabold text-text dark:text-text-dark md:text-20">
         {text}
-      </Text>
-    </Stack>
-  </Paper>
+      </p>
+    </div>
+  </Link>
 );
 
 // -- Accordion Data
@@ -249,8 +216,7 @@ const workExperience = [
     title: 'Community Manager',
     company: 'GridGain',
     date: '2020 - 2021',
-    description:
-      'Did some things. Lots of community stuff. All the management.',
+    description: 'Did some things. Lots of community stuff. All the management.',
     details: ['Built a thing', 'Did another thing', 'Wrote some code'],
   },
   {
@@ -266,43 +232,28 @@ const workExperience = [
 
 // -- Work Experience Accordion
 const WorkExperienceAccordion = () => (
-  <Accordion
-    variant="default"
-    w="100%"
-    chevron={<IconPlus />}
-    chevronPosition="right"
-    chevronSize={30}
-    styles={{
-      // Remove hover background on both item and control
-      item: {
-        backgroundColor: 'transparent',
-      },
-      control: {
-        backgroundColor: 'transparent',
-      },
-    }}
-    pb="8rem"
-  >
+  <Accordion type="single" collapsible className="w-full pb-[8rem]">
     {workExperience.map((item) => (
-      <Accordion.Item value={item.id.toString()} key={item.id}>
-        <Accordion.Control p={0}>
-          <Box pb="md">
-            <WorkExperienceLabel
-              title={item.title}
-              company={item.company}
-              date={item.date}
-              description={item.description}
-            />
-          </Box>
-        </Accordion.Control>
-        <Accordion.Panel>
-          <List spacing="xs" size="sm" icon={<span>-</span>}>
+      <AccordionItem value={item.id.toString()} key={item.id}>
+        <AccordionTrigger>
+          <WorkExperienceLabel
+            title={item.title}
+            company={item.company}
+            date={item.date}
+            description={item.description}
+          />
+        </AccordionTrigger>
+        <AccordionContent>
+          <ul className="list-none space-y-[1rem] text-14">
             {item.details.map((detail, i) => (
-              <List.Item key={i}>{detail}</List.Item>
+              <li key={i} className="flex items-start gap-2">
+                <span>-</span>
+                <span>{detail}</span>
+              </li>
             ))}
-          </List>
-        </Accordion.Panel>
-      </Accordion.Item>
+          </ul>
+        </AccordionContent>
+      </AccordionItem>
     ))}
   </Accordion>
 );
@@ -318,23 +269,14 @@ const WorkExperienceLabel = ({
   date: string;
   description: string;
 }) => (
-  <Stack gap="sm" pr="xl">
-    {/* Title, Company, Date on the left, so it doesn't clash with the + icon */}
-    <Stack gap={0}>
-      <Text size="xs" c="dimmed">
-        {date}
-      </Text>
-      <Text fw={700}>{title}</Text>
-      <Text size="sm" c="dimmed">
-        {company}
-      </Text>
-    </Stack>
-
-    {/* Add space before the + icon by using pb in Accordion.Control */}
-    <Text size="sm" pr="xl">
-      {description}
-    </Text>
-  </Stack>
+  <div className="flex flex-col gap-[1.2rem] pr-[3.2rem]">
+    <div className="flex flex-col gap-0">
+      <span className="text-14 text-muted-foreground">{date}</span>
+      <span className="text-18 font-bold">{title}</span>
+      <span className="text-16 text-muted-foreground">{company}</span>
+    </div>
+    <p className="pr-[3.2rem] text-16">{description}</p>
+  </div>
 );
 
 const skillsData = [
@@ -373,63 +315,49 @@ const skillsData = [
     icon: <IconBrandAws size={40} />,
     details: 'Amazon Web Services',
   },
-  // ...
 ];
 
 interface SkillCardProps {
-  icon: ReactNode; // e.g. <IconBrandReact ... />
-  name: string; // e.g. "React"
-  category: string; // e.g. "Frontend"
-  details: string; // shown in tooltip
+  icon: ReactNode;
+  name: string;
+  category: string;
+  details: string;
 }
 
 const SkillCard = ({ icon, name, category, details }: SkillCardProps) => {
   return (
-    <HoverCard shadow="md" closeDelay={50}>
-      <HoverCard.Target>
-        {/* The “outer” card that shows icon + text */}
-        <Paper
-          radius="lg"
-          p="md"
-          className="cursor-pointer transition-transform duration-150 ease-in-out hover:scale-[1.02]"
-        >
-          <Flex align="center" gap="md">
-            {/* Icon on the left */}
+    <HoverCard openDelay={0} closeDelay={0}>
+      <HoverCardTrigger asChild>
+        <div className="card-scale-hover cursor-pointer rounded-lg bg-card p-[1.6rem] shadow-sm">
+          <div className="flex items-center gap-[1.6rem]">
             {icon}
-            <Stack gap={2}>
-              {/* Bold name */}
-              <Text fw={700} fz="md" lh={1.2}>
-                {name}
-              </Text>
-              {/* Category below */}
-              <Text c="dimmed" fz="sm">
-                {category}
-              </Text>
-            </Stack>
-          </Flex>
-        </Paper>
-      </HoverCard.Target>
-
-      <HoverCard.Dropdown>
-        <Text size="sm">{details}</Text>
-      </HoverCard.Dropdown>
+            <div className="flex flex-col gap-[0.2rem]">
+              <span className="text-16 font-bold leading-snug">{name}</span>
+              <span className="text-14 text-muted-foreground">{category}</span>
+            </div>
+          </div>
+        </div>
+      </HoverCardTrigger>
+      <HoverCardContent className="w-auto max-w-[20rem]">
+        <p className="text-14">{details}</p>
+      </HoverCardContent>
     </HoverCard>
   );
 };
 
 const SkillsSection = () => {
   return (
-    <Grid columns={12} gutter="md">
+    <div className="grid grid-cols-12 gap-[1.6rem]">
       {skillsData.map((skill) => (
-        <Grid.Col key={skill.id} span={{ base: 12, lg: 6 }}>
+        <div key={skill.id} className="col-span-12 lg:col-span-6">
           <SkillCard
             icon={skill.icon}
             name={skill.name}
             category={skill.category}
             details={skill.details}
           />
-        </Grid.Col>
+        </div>
       ))}
-    </Grid>
+    </div>
   );
 };

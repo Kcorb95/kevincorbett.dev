@@ -1,6 +1,5 @@
 'use client';
 
-import { Flex, Text } from '@mantine/core';
 import Link from 'next/link';
 
 const navItems = [
@@ -11,18 +10,14 @@ const navItems = [
   { label: 'Contact', href: '/contact' },
 ];
 
-/**
- * NavLinks
- * Renders links in a row with Mantine <Flex>.
- */
 export const NavLinks = () => {
   return (
-    <Flex gap="md" align="center">
+    <div className="flex items-center gap-[1.6rem]">
       {navItems.map((item) => (
-        <Link key={item.label} href={item.href} className="hover:underline">
-          <Text>{item.label}</Text>
+        <Link key={item.label} href={item.href} className="text-16 hover:underline">
+          {item.label}
         </Link>
       ))}
-    </Flex>
+    </div>
   );
 };

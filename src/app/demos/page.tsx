@@ -1,15 +1,9 @@
-'use client';
-
-import { Stack, Title, Text } from '@mantine/core';
-
 const DemosPage = () => {
   return (
-    <Stack gap="md" align="center">
-      <Title order={1} size="3xl">
-        Just a whole bunch of demos
-      </Title>
-      <Text>insert bento</Text>
-    </Stack>
+    <div className="flex flex-col items-center gap-[1.6rem]">
+      <h1 className="text-30 font-bold">Just a whole bunch of demos</h1>
+      <p className="text-16">insert bento</p>
+    </div>
   );
 };
 
