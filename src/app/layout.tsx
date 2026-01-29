@@ -1,20 +1,12 @@
 import './globals.css';
 
-import type { Metadata } from 'next';
-import { ReactNode } from 'react';
-import { Inter } from 'next/font/google';
-
-import {
-  ColorSchemeScript,
-  mantineHtmlProps,
-  MantineProvider,
-} from '@mantine/core';
-import { theme } from './theme';
-
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
-
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import type { ReactNode } from 'react';
 import { TopNav } from '@/components/features/navs/top-nav';
+import { ThemeProvider } from '@/components/providers/theme-provider';
 
 export const metadata: Metadata = {
   title: 'My Portfolio',
@@ -28,15 +20,18 @@ const inter = Inter({
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <html lang="en" className={inter.className} {...mantineHtmlProps}>
-      <head>
-        <ColorSchemeScript defaultColorScheme="auto" />
-      </head>
+    <html lang="en" className={inter.className} suppressHydrationWarning>
+      <head />
       <body className="bg-background text-foreground">
-        <MantineProvider theme={theme} defaultColorScheme="auto">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <TopNav />
           <main className="mx-auto max-w-[120rem] px-4 py-6">{children}</main>
-        </MantineProvider>
+        </ThemeProvider>
         <SpeedInsights />
         <Analytics />
       </body>

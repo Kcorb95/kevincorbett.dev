@@ -1,39 +1,41 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { ActionIcon, useMantineColorScheme } from '@mantine/core';
 import { Moon, Sun } from 'lucide-react';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 export const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false);
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
-    // When this effect runs, the component is mounted, so you can safely show icons
     setMounted(true);
   }, []);
 
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+  };
+
   if (!mounted) {
-    // Server render: Return a placeholder or nothing (matching minimal HTML).
     return (
-      <ActionIcon
-        variant="transparent"
+      <button
+        type="button"
+        className="inline-flex h-[4rem] w-[4rem] items-center justify-center rounded-md bg-transparent text-foreground hover:bg-accent"
         title="Toggle theme"
-        size="xl"
-        color="primary"
-      ></ActionIcon>
+        aria-label="Toggle theme"
+      />
     );
   }
 
   return (
-    <ActionIcon
-      variant="transparent"
-      onClick={toggleColorScheme}
+    <button
+      type="button"
+      onClick={toggleTheme}
+      className="inline-flex h-[4rem] w-[4rem] items-center justify-center rounded-md bg-transparent text-foreground hover:bg-accent"
       title="Toggle theme"
-      size="xl"
-      color="primary"
+      aria-label="Toggle theme"
     >
-      {colorScheme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-    </ActionIcon>
+      {resolvedTheme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+    </button>
   );
 };

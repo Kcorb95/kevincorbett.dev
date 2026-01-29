@@ -1,65 +1,43 @@
 import Link from 'next/link';
+import { Badge } from '@/components/ui/badge';
 import { listAllMdxMeta } from '@/lib/mdx';
-import {
-  Box,
-  Title,
-  Stack,
-  Paper,
-  Text,
-  Anchor,
-  Group,
-  Badge,
-} from '@mantine/core';
 
 const ProjectsIndexPage = () => {
   const mdxItems = listAllMdxMeta('projects');
   mdxItems.sort(
-    (a, b) =>
-      new Date(b.frontMatter.date).getTime() -
-      new Date(a.frontMatter.date).getTime()
+    (a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime(),
   );
 
   return (
-    <Box pb="xl">
-      <Title order={1} size="3xl" fw="bold">
-        Projects
-      </Title>
-      <Stack component="ul" gap="xl">
+    <div className="pb-[3.2rem]">
+      <h1 className="text-30 font-bold">Projects</h1>
+      <ul className="flex flex-col gap-[3.2rem]">
         {mdxItems.map((item) => {
           const { slug, frontMatter } = item;
           return (
-            <Paper
+            <li
               key={slug}
-              component="li"
-              withBorder
-              radius="md"
-              p="md"
-              shadow="xs"
-              className="rounded border p-4 shadow-xs transition-shadow hover:shadow-md"
+              className="rounded-md border border-border p-[1.6rem] shadow-xs transition-shadow hover:shadow-md"
             >
-              <Link href={`/projects/${slug}`} legacyBehavior>
-                <Anchor size="xl" underline="always">
-                  {frontMatter.title}
-                </Anchor>
+              <Link href={`/projects/${slug}`} className="text-20 underline">
+                {frontMatter.title}
               </Link>
-              <Text size="sm" c="dimmed">
-                {frontMatter.date}
-              </Text>
-              <Text pb="sm">{frontMatter.description}</Text>
+              <p className="text-14 text-muted-foreground">{frontMatter.date}</p>
+              <p className="pb-[1.2rem] text-16">{frontMatter.description}</p>
               {frontMatter.tech && (
-                <Group gap="xs">
+                <div className="flex flex-wrap gap-[0.8rem]">
                   {frontMatter.tech.map((t) => (
-                    <Badge key={t} variant="light" c="gray" size="xl">
+                    <Badge key={t} variant="light" size="xl">
                       {t}
                     </Badge>
                   ))}
-                </Group>
+                </div>
               )}
-            </Paper>
+            </li>
           );
         })}
-      </Stack>
-    </Box>
+      </ul>
+    </div>
   );
 };
 

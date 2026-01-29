@@ -1,5 +1,5 @@
-export { TopNav } from './TopNav';
-export { NavLinks } from './NavLinks';
 export { Brand } from './Brand';
+export { type NavLinkItem, navLinks } from './NavConfig';
+export { NavLinks } from './NavLinks';
 export { ThemeToggle } from './ThemeToggle';
-export { navLinks, type NavLinkItem } from './NavConfig';
+export { TopNav } from './TopNav';

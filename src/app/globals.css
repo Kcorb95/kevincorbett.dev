@@ -1,11 +1,10 @@
 @import 'tailwindcss';
-@import '@mantine/core/styles.layer.css';
 
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
 @plugin "tailwindcss-animate";
 
-@custom-variant dark (&:where([data-mantine-color-scheme='dark'] &));
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* Set the root font size to 62.5% for 1rem = 10px */
 html {
@@ -147,17 +146,106 @@ html {
   --color-neutral-900: #151412; /* off-black for text on light mode */
   --color-primary-500: #8c6d1f; /* e.g., a warm accent color (just an example) */
   --color-primary-600: #7c5f1a; /* darker shade for hover */
+
+  /* shadcn-compatible color tokens */
+  --color-foreground: #1a1b1e;
+  --color-card: #fff;
+  --color-card-foreground: #1a1b1e;
+  --color-popover: #fff;
+  --color-popover-foreground: #1a1b1e;
+  --color-muted: #f5f5f5;
+  --color-muted-foreground: #6b7280;
+  --color-accent: #f5f5f5;
+  --color-accent-foreground: #1a1b1e;
+  --color-border: #e5e7eb;
+  --color-ring: #a64d79;
+  --color-plum: #a64d79;
+
+  /* Mantine-style filled colors for bento cards (light mode) */
+  --color-bento-pink: #e64980;
+  --color-bento-violet: #7950f2;
+  --color-bento-teal: #12b886;
+  --color-bento-amber: #fab005;
 }
 
-/* Apply theme colors to body based on Mantine's color scheme */
+/* Apply theme colors to body */
 body {
   font-family: var(--font-sans);
   background-color: var(--color-background);
   color: var(--color-text);
 }
 
-/* Dark mode styles */
-html[data-mantine-color-scheme='dark'] body {
+/* Dark mode styles using class-based approach */
+.dark body {
   background-color: var(--color-background-dark);
   color: var(--color-text-dark);
+}
+
+/* Dark mode color overrides */
+.dark {
+  --color-foreground: #f5f5f5;
+  --color-card: #242424;
+  --color-card-foreground: #f5f5f5;
+  --color-popover: #242424;
+  --color-popover-foreground: #f5f5f5;
+  --color-muted: #242424;
+  --color-muted-foreground: #a1a1aa;
+  --color-accent: #242424;
+  --color-accent-foreground: #f5f5f5;
+  --color-border: #3f3f46;
+  --color-ring: #a64d79;
+
+  /* Mantine-style filled colors for bento cards (dark mode) */
+  --color-bento-pink: #c2255c;
+  --color-bento-violet: #6741d9;
+  --color-bento-teal: #099268;
+  --color-bento-amber: #f08c00;
+}
+
+/* Accordion animations */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+
+  to {
+    height: 0;
+  }
+}
+
+.animate-accordion-down {
+  animation: accordion-down 0.1s ease-out;
+}
+
+.animate-accordion-up {
+  animation: accordion-up 0.1s ease-out;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.card-hover:hover {
+  transform: rotate(1deg);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+}
+
+.card-scale-hover {
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.card-scale-hover:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
 }

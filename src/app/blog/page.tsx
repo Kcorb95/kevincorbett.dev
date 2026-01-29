@@ -1,46 +1,33 @@
 import Link from 'next/link';
 import { listAllMdxMeta } from '@/lib/mdx';
-import { Box, Stack, Title, Text, Anchor } from '@mantine/core';
 
 const BlogIndexPage = () => {
   const mdxItems = listAllMdxMeta('blogs');
 
   mdxItems.sort(
-    (a, b) =>
-      new Date(b.frontMatter.date).getTime() -
-      new Date(a.frontMatter.date).getTime()
+    (a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime(),
   );
 
   return (
-    <Box pb={32}>
-      <Title order={1} size="3xl">
-        Blog
-      </Title>
-      <Stack component="ul" gap={16} mt={16}>
+    <div className="pb-[3.2rem]">
+      <h1 className="text-30 font-bold">Blog</h1>
+      <ul className="mt-[1.6rem] flex flex-col gap-[1.6rem]">
         {mdxItems.map((item) => {
           const { slug, frontMatter } = item;
           return (
-            <Box component="li" key={slug}>
-              <Link href={`/blog/${slug}`} legacyBehavior>
-                {/* No Mantine equivalent for hover:underline & text-xl exists, so we use a className */}
-                <Anchor className="text-xl hover:underline">
-                  {frontMatter.title}
-                </Anchor>
+            <li key={slug}>
+              <Link href={`/blog/${slug}`} className="text-20 hover:underline">
+                {frontMatter.title}
               </Link>
-              <Text size="sm" c="dimmed">
-                {frontMatter.date}
-              </Text>
+              <p className="text-14 text-muted-foreground">{frontMatter.date}</p>
               {frontMatter.excerpt && (
-                // No direct Mantine prop for dynamic dark mode text; using className as fallback
-                <Text className="text-gray-700 dark:text-gray-200">
-                  {frontMatter.excerpt}
-                </Text>
+                <p className="text-gray-700 dark:text-gray-200">{frontMatter.excerpt}</p>
               )}
-            </Box>
+            </li>
           );
         })}
-      </Stack>
-    </Box>
+      </ul>
+    </div>
   );
 };
 

@@ -1,13 +1,6 @@
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { readMdxContent, getAllSlugs } from '@/lib/mdx';
-import {
-  Box,
-  Title,
-  Text,
-  Anchor,
-  TypographyStylesProvider,
-} from '@mantine/core';
+import { getAllSlugs, readMdxContent } from '@/lib/mdx';
 
 export async function generateStaticParams() {
   const slugs = getAllSlugs('projects');
@@ -32,36 +25,31 @@ const ProjectPage = async (props: ProjectPageProps) => {
   const { data, content } = mdx;
 
   return (
-    <Box pb="xl">
-      <Title order={1}>{data.title}</Title>
-      <Text size="sm" c="dimmed">
-        {data.date}
-      </Text>
+    <div className="pb-[3.2rem]">
+      <h1 className="text-30 font-bold">{data.title}</h1>
+      <p className="text-14 text-muted-foreground">{data.date}</p>
 
       {data.tech?.length ? (
-        <Text size="sm" c="dimmed">
-          Tech: {data.tech.join(', ')}
-        </Text>
+        <p className="text-14 text-muted-foreground">Tech: {data.tech.join(', ')}</p>
       ) : null}
 
       {data.github && (
-        <Text size="sm" pb="sm">
-          <Anchor
+        <p className="pb-[1.2rem] text-14">
+          <a
             href={data.github}
             target="_blank"
             rel="noreferrer"
-            c="blue"
-            underline="always"
+            className="text-blue-600 underline dark:text-blue-400"
           >
             View on GitHub
-          </Anchor>
-        </Text>
+          </a>
+        </p>
       )}
 
-      <TypographyStylesProvider>
+      <article className="prose prose-lg max-w-none dark:prose-invert">
         <MDXRemote source={content} />
-      </TypographyStylesProvider>
-    </Box>
+      </article>
+    </div>
   );
 };
 

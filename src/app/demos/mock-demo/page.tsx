@@ -1,16 +1,10 @@
-'use client';
-
-import { Stack, Title, Text } from '@mantine/core';
-
-const DemosPage = () => {
+const MockDemoPage = () => {
   return (
-    <Stack gap="md" align="center">
-      <Title order={1} size="3xl">
-        One particular demo
-      </Title>
-      <Text>insert demo</Text>
-    </Stack>
+    <div className="flex flex-col items-center gap-[1.6rem]">
+      <h1 className="text-30 font-bold">One particular demo</h1>
+      <p className="text-16">insert demo</p>
+    </div>
   );
 };
 
-export default DemosPage;
+export default MockDemoPage;
