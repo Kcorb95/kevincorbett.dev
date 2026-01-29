@@ -1,3 +1,10 @@
 {
-  "installCommand": "pnpm install"
+  "installCommand": "pnpm install",
+  "framework": "nextjs",
+  "nodeVersion": "24.x",
+  "functions": {
+    "**/*": {
+      "fluid": true
+    }
+  }
 }
