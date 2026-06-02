@@ -21,35 +21,33 @@ const AboutPage = () => {
   return (
     <div className="grid items-start gap-[3.2rem] lg:grid-cols-[minmax(0,1fr)_34rem]">
       <section className="lg:col-span-2">
-        <div className="grid items-start gap-[2rem] md:grid-cols-[20rem_minmax(0,1fr)]">
-          <div className="flex flex-col items-center justify-center gap-[1rem]">
-            <div className="flex justify-center rounded-lg bg-card p-[1.6rem] shadow-sm">
-              <Image
-                src="/memoji_wave.png"
-                alt="Memoji illustration of Kevin waving"
-                width={184}
-                height={184}
-                priority
-              />
-            </div>
-            <div className="flex items-center gap-[1rem] self-start">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={link.href.startsWith('http') ? '_blank' : undefined}
-                  rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
-                  className="inline-flex h-[3.2rem] w-[3.2rem] items-center justify-center rounded-md bg-card text-primary shadow-xs transition-colors hover:bg-accent"
-                  aria-label={link.label}
-                  title={link.label}
-                >
-                  {socialIconMap[link.label]}
-                </a>
-              ))}
-            </div>
+        <div className="grid gap-x-[2rem] gap-y-[1rem] md:grid-cols-[20rem_minmax(0,1fr)]">
+          <div className="flex justify-center rounded-lg bg-card p-[1.6rem] shadow-sm md:col-start-1 md:row-start-1">
+            <Image
+              src="/memoji_wave.png"
+              alt="Memoji illustration of Kevin waving"
+              width={184}
+              height={184}
+              priority
+            />
+          </div>
+          <div className="flex items-center gap-[1rem] self-start md:col-start-1 md:row-start-2">
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+                className="inline-flex h-[3.2rem] w-[3.2rem] items-center justify-center rounded-md bg-card text-primary shadow-xs transition-colors hover:bg-accent"
+                aria-label={link.label}
+                title={link.label}
+              >
+                {socialIconMap[link.label]}
+              </a>
+            ))}
           </div>
 
-          <div className="border-primary border-l-2 pl-[1.8rem] md:mt-[1.8rem]">
+          <div className="border-primary border-l-2 pl-[1.8rem] md:col-start-2 md:row-start-1 md:self-center">
             <h1 className="text-[2.2rem] font-black leading-snug md:text-[3rem]">
               Passionate software engineer with a builder&apos;s mindset
             </h1>
