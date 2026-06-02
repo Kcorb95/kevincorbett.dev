@@ -1,0 +1,29 @@
+---
+title: 'Portfolio Operating System'
+slug: 'portfolio-operating-system'
+date: '2026-02-10'
+tech:
+  - Next.js
+  - MDX
+  - TypeScript
+  - Tailwind CSS
+description: 'A publishing foundation for projects, writing, demos, and professional context powered by Next.js App Router and MDX.'
+featured: true
+---
+
+## Context
+
+Personal sites get stale when every update feels like design work. This project treats the portfolio as a publishing system instead of a one-off page.
+
+## Approach
+
+The site separates long-lived facts from routed presentation:
+
+- Shared profile, experience, skill, and navigation data lives in one typed module.
+- Blog posts and project writeups live as MDX files.
+- Route components render indexes and detail pages from that content.
+- The visual system uses a compact set of theme tokens and local UI primitives.
+
+## Outcome
+
+The result is a portfolio that is easier to maintain. New writing or project pages can be added by dropping in MDX, while repeated facts stay consistent across the homepage, About page, Contact page, and navigation.

@@ -10,6 +10,7 @@ export interface FrontMatter {
   description?: string;
   tech?: string[];
   github?: string;
+  featured?: boolean;
 }
 
 interface MdxMetaItem {
@@ -17,41 +18,63 @@ interface MdxMetaItem {
   frontMatter: FrontMatter;
 }
 
-export const listAllMdxMeta = (contentType: 'blogs' | 'projects'): MdxMetaItem[] => {
-  const baseDir = path.join(process.cwd(), 'src/content', contentType);
+type ContentType = 'blogs' | 'projects';
+
+const getContentDir = (contentType: ContentType) =>
+  path.join(process.cwd(), 'src/content', contentType);
+
+const getMdxFiles = (contentType: ContentType) => {
+  const baseDir = getContentDir(contentType);
+
   if (!fs.existsSync(baseDir)) {
     return [];
   }
-  const files = fs.readdirSync(baseDir).filter((f) => f.endsWith('.mdx'));
 
-  return files.map((fileName) => {
-    const fullPath = path.join(baseDir, fileName);
-    const raw = fs.readFileSync(fullPath, 'utf8');
-    const { data } = matter(raw);
-    const slug = (data.slug as string) || fileName.replace(/\.mdx$/, '');
-    return { slug, frontMatter: data as FrontMatter };
-  });
+  return fs.readdirSync(baseDir).filter((fileName) => fileName.endsWith('.mdx'));
 };
 
-export const getAllSlugs = (contentType: 'blogs' | 'projects'): string[] => {
-  const baseDir = path.join(process.cwd(), 'src/content', contentType);
-  if (!fs.existsSync(baseDir)) {
-    return [];
-  }
-  return fs
-    .readdirSync(baseDir)
-    .filter((f) => f.endsWith('.mdx'))
-    .map((f) => f.replace(/\.mdx$/, ''));
+const getSlugFromFileName = (fileName: string) => fileName.replace(/\.mdx$/, '');
+
+const readMdxFile = (contentType: ContentType, fileName: string) => {
+  const fullPath = path.join(getContentDir(contentType), fileName);
+  const raw = fs.readFileSync(fullPath, 'utf8');
+  const { data, content } = matter(raw);
+  const slug = (data.slug as string) || getSlugFromFileName(fileName);
+
+  return {
+    slug,
+    frontMatter: data as FrontMatter,
+    content,
+    fileName,
+  };
 };
 
-export const readMdxContent = (contentType: 'blogs' | 'projects', slug: string) => {
-  const baseDir = path.join(process.cwd(), 'src/content', contentType);
-  const filePath = path.join(baseDir, `${slug}.mdx`);
+export const listAllMdxMeta = (contentType: ContentType): MdxMetaItem[] => {
+  return getMdxFiles(contentType)
+    .map((fileName) => {
+      const { slug, frontMatter } = readMdxFile(contentType, fileName);
+      return { slug, frontMatter };
+    })
+    .sort(
+      (a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime(),
+    );
+};
 
-  if (!fs.existsSync(filePath)) {
+export const getAllSlugs = (contentType: ContentType): string[] => {
+  return listAllMdxMeta(contentType).map((item) => item.slug);
+};
+
+export const readMdxContent = (contentType: ContentType, slug: string) => {
+  const files = getMdxFiles(contentType);
+  const directFile = `${slug}.mdx`;
+  const matchingFile = files.includes(directFile)
+    ? directFile
+    : files.find((fileName) => readMdxFile(contentType, fileName).slug === slug);
+
+  if (!matchingFile) {
     return null;
   }
-  const raw = fs.readFileSync(filePath, 'utf8');
-  const { data, content } = matter(raw);
-  return { data: data as FrontMatter, content };
+
+  const { frontMatter, content } = readMdxFile(contentType, matchingFile);
+  return { data: frontMatter, content };
 };
