@@ -1,30 +1,57 @@
+import { Mail } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { education, experience, profile, skillGroups } from '@/lib/portfolio';
+import type { ReactNode } from 'react';
+import { GitHubIcon, LinkedInIcon, TwitterIcon } from '@/components/icons/social-icons';
+import { education, experience, profile, skillGroups, socialLinks } from '@/lib/portfolio';
 
 export const metadata: Metadata = {
   title: 'About',
   description: 'Background, working style, and technical focus areas for Kevin Corbett.',
 };
 
+const socialIconMap: Record<string, ReactNode> = {
+  GitHub: <GitHubIcon size={16} />,
+  Email: <Mail size={16} />,
+  Twitter: <TwitterIcon size={16} />,
+  LinkedIn: <LinkedInIcon size={16} />,
+};
+
 const AboutPage = () => {
   return (
     <div className="grid items-start gap-[3.2rem] lg:grid-cols-[minmax(0,1fr)_34rem]">
       <section className="lg:col-span-2">
-        <div className="grid items-center gap-[2rem] md:grid-cols-[20rem_minmax(0,1fr)]">
-          <div className="flex justify-center rounded-lg bg-card p-[1.6rem] shadow-sm md:justify-start">
-            <Image
-              src="/memoji_wave.png"
-              alt="Memoji illustration of Kevin waving"
-              width={184}
-              height={184}
-              priority
-            />
+        <div className="grid items-start gap-[2rem] md:grid-cols-[20rem_minmax(0,1fr)]">
+          <div className="flex flex-col items-center justify-center gap-[1rem]">
+            <div className="flex justify-center rounded-lg bg-card p-[1.6rem] shadow-sm">
+              <Image
+                src="/memoji_wave.png"
+                alt="Memoji illustration of Kevin waving"
+                width={184}
+                height={184}
+                priority
+              />
+            </div>
+            <div className="flex items-center gap-[1rem] self-start">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+                  className="inline-flex h-[3.2rem] w-[3.2rem] items-center justify-center rounded-md bg-card text-primary shadow-xs transition-colors hover:bg-accent"
+                  aria-label={link.label}
+                  title={link.label}
+                >
+                  {socialIconMap[link.label]}
+                </a>
+              ))}
+            </div>
           </div>
 
-          <div className="border-primary border-l-2 pl-[1.8rem]">
+          <div className="border-primary border-l-2 pl-[1.8rem] md:mt-[1.8rem]">
             <h1 className="text-[2.2rem] font-black leading-snug md:text-[3rem]">
-              Passionate software engineer with a builder&apos;s mindset.
+              Passionate software engineer with a builder&apos;s mindset
             </h1>
             <p className="mt-[1.4rem] text-[1.7rem] leading-relaxed text-muted-foreground">
               {profile.linkedInSummary.replace(
@@ -113,7 +140,7 @@ const AboutPage = () => {
       <section className="lg:col-span-2">
         <p className="text-[1.4rem] font-bold uppercase text-primary">Credentials</p>
         <h2 className="mt-[1rem] text-[2.4rem] font-black">Education</h2>
-        <div className="mt-[1.2rem] grid gap-[1.2rem] md:grid-cols-3">
+        <div className="mt-[1.2rem] grid gap-[1.2rem] md:grid-cols-2 xl:grid-cols-4">
           {education.map((item) => (
             <article
               key={item.degree}

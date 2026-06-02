@@ -63,7 +63,7 @@ export const profile = {
   title: 'Platform-minded software engineer for developer systems',
   shortTitle: 'Software Engineer',
   location: 'United States',
-  email: 'hello@kevincorbett.dev',
+  email: 'kevin.corbett08@gmail.com',
   availability: 'Open to platform, developer experience, and full-stack engineering work',
   headline:
     'Platform-minded software engineer building developer systems, AI tooling, and cloud workflows.',
@@ -90,9 +90,10 @@ export const navLinks: NavLinkItem[] = [
 ];
 
 export const socialLinks: SocialLink[] = [
-  { label: 'GitHub', href: 'https://github.com/kevincorbett' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/kevincorbett' },
+  { label: 'GitHub', href: 'https://github.com/kcorb95' },
   { label: 'Email', href: `mailto:${profile.email}` },
+  { label: 'Twitter', href: 'https://twitter.com/kev_indev' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/kcorb95' },
 ];
 
 export const focusAreas = [
@@ -123,6 +124,13 @@ export const education: EducationItem[] = [
     date: '2019',
     details:
       'Security coursework focused on the systems, networks, and software practices behind resilient applications.',
+  },
+  {
+    degree: 'Foreign Language Minor',
+    institution: 'Akita International University',
+    date: '2017',
+    details:
+      'Key courses: Japanese (JLPT N5) and beginner Korean speaking, reading, listening, and writing.',
   },
 ];
 

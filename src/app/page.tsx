@@ -6,13 +6,14 @@ import {
   SkillsSection,
   WorkExperienceAccordion,
 } from '@/components/features/home/HomeClientSections';
-import { GitHubIcon, LinkedInIcon } from '@/components/icons/social-icons';
+import { GitHubIcon, LinkedInIcon, TwitterIcon } from '@/components/icons/social-icons';
 import { experience, profile, socialLinks } from '@/lib/portfolio';
 
 const socialIconMap: Record<string, ReactNode> = {
   GitHub: <GitHubIcon size={28} />,
-  LinkedIn: <LinkedInIcon size={28} />,
   Email: <Mail size={28} />,
+  Twitter: <TwitterIcon size={28} />,
+  LinkedIn: <LinkedInIcon size={28} />,
 };
 
 const colorMap = {
