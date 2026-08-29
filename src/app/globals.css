@@ -6,26 +6,20 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Set the root font size to 62.5% for 1rem = 10px */
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
-/* Define custom theme variables using Tailwind's @theme directive */
 @theme {
-  /* Light theme colors */
-  --color-background: #f5f5f5; /* Off-white background */
-  --color-text: #1a1b1e; /* Off-black text */
-
-  /* Dark theme colors */
-  --color-background-dark: #1a1b1e; /* Off-black background */
-  --color-text-dark: #f5f5f5; /* Off-white text */
+  --color-background: #f5f5f5;
+  --color-text: #1a1b1e;
+  --color-background-dark: #1a1b1e;
+  --color-text-dark: #f5f5f5;
   --font-sans:
-    system-ui, -apple-system, blinkmacsystemfont, 'Segoe UI', oxygen, ubuntu,
-    cantarell, 'Fira Sans', 'Droid Sans', helvetica, arial, sans-serif;
+    system-ui, -apple-system, blinkmacsystemfont, 'Segoe UI', oxygen, ubuntu, cantarell,
+    'Fira Sans', 'Droid Sans', helvetica, arial, sans-serif;
   --font-mono: 'Fira Code', monospace;
-
-  /* Typography Scale (font sizes) */
   --text-10: 1rem;
   --text-12: 1.2rem;
   --text-14: 1.4rem;
@@ -40,92 +34,16 @@ html {
   --text-72: 7.2rem;
   --text-96: 9.6rem;
   --text-128: 12.8rem;
-
-  /* Line Heights (leading-*) */
   --leading-normal: 1.5;
   --leading-snug: 1.3;
   --leading-tight: 1.1;
-  --leading-1: 1rem;
-  --leading-1.5: 1.5rem;
-  --leading-2: 2rem;
-  --leading-3: 3rem;
-  --leading-3.5: 3.5rem;
-  --leading-4: 4rem;
-  --leading-4.5: 4.5rem;
-  --leading-5: 5rem;
-  --leading-5.5: 5.5rem;
-  --leading-6: 6rem;
-  --leading-6.5: 6.5rem;
-  --leading-7: 7rem;
-  --leading-8: 8rem;
-  --leading-9: 9rem;
-  --leading-10: 10rem;
-
-  /* Letter-spacing (tracking-*) */
-  --tracking-tighter: -0.05rem;
-  --tracking-tight: -0.025rem;
   --tracking-normal: 0rem;
-  --tracking-wide: 0.025rem;
-  --tracking-wider: 0.05rem;
-  --tracking-widest: 0.1rem;
-
-  /* Spacing Scale (spacing-*) */
-  --spacing-0: 0rem;
-  --spacing-0.5: 0.5rem;
-  --spacing-1: 1rem;
-  --spacing-1.5: 1.5rem;
-  --spacing-2: 2rem;
-  --spacing-2.5: 2.5rem;
-  --spacing-3: 3rem;
-  --spacing-3.5: 3.5rem;
-  --spacing-4: 4rem;
-  --spacing-4.5: 4.5rem;
-  --spacing-5: 5rem;
-  --spacing-5.5: 5.5rem;
-  --spacing-6: 6rem;
-  --spacing-6.5: 6.5rem;
-  --spacing-7: 7rem;
-  --spacing-8: 8rem;
-  --spacing-9: 9rem;
-  --spacing-10: 10rem;
-  --spacing-11: 11rem;
-  --spacing-12: 12rem;
-  --spacing-14: 14rem;
-  --spacing-16: 16rem;
-  --spacing-20: 20rem;
-  --spacing-24: 24rem;
-  --spacing-25: 25rem;
-  --spacing-28: 28rem;
-  --spacing-32: 32rem;
-  --spacing-36: 36rem;
-  --spacing-40: 40rem;
-  --spacing-44: 44rem;
-  --spacing-48: 48rem;
-  --spacing-52: 52rem;
-  --spacing-56: 56rem;
-  --spacing-60: 60rem;
-  --spacing-64: 64rem;
-  --spacing-72: 72rem;
-  --spacing-80: 80rem;
-  --spacing-96: 96rem;
-
-  /* Border Radius (radius-*) */
-  --radius-none: 0;
   --radius-sm: 0.2rem;
   --radius-default: 0.4rem;
   --radius-md: 0.6rem;
   --radius-lg: 0.8rem;
   --radius-xl: 1rem;
-  --radius-12: 1.2rem;
-  --radius-14: 1.4rem;
-  --radius-16: 1.6rem;
-  --radius-18: 1.8rem;
-  --radius-20: 2rem;
-  --radius-22: 2.2rem;
-  --radius-24: 2.4rem;
   --radius-full: 9999px;
-
-  /* Shadows (box-shadow utilities) */
   --shadow-xs: 0 1px 3px rgb(0 0 0 / 5%), 0 1px 2px rgb(0 0 0 / 10%);
   --shadow-sm:
     0 1px 3px rgb(0 0 0 / 5%), 0 10px 15px -5px rgb(0 0 0 / 5%),
@@ -139,20 +57,20 @@ html {
   --shadow-xl:
     0 1px 3px rgb(0 0 0 / 5%), 0 36px 28px -7px rgb(0 0 0 / 5%),
     0 17px 17px -7px rgb(0 0 0 / 4%);
-
-  /* Color Palette – define pastel off-white, off-black, and accents */
-  --color-neutral-0: #f9f5f2; /* warm off-white */
-  --color-neutral-100: #f0eae7; /* a slightly darker off-white for borders, etc. */
-  --color-neutral-900: #151412; /* off-black for text on light mode */
-  --color-primary-500: #8c6d1f; /* e.g., a warm accent color (just an example) */
-  --color-primary-600: #7c5f1a; /* darker shade for hover */
-
-  /* shadcn-compatible color tokens */
+  --color-neutral-0: #f9f5f2;
+  --color-neutral-100: #f0eae7;
+  --color-neutral-900: #151412;
+  --color-primary-500: #8c6d1f;
+  --color-primary-600: #7c5f1a;
   --color-foreground: #1a1b1e;
   --color-card: #fff;
   --color-card-foreground: #1a1b1e;
   --color-popover: #fff;
   --color-popover-foreground: #1a1b1e;
+  --color-primary: #a64d79;
+  --color-primary-foreground: #f5f5f5;
+  --color-secondary: #f5f5f5;
+  --color-secondary-foreground: #1a1b1e;
   --color-muted: #f5f5f5;
   --color-muted-foreground: #6b7280;
   --color-accent: #f5f5f5;
@@ -160,49 +78,46 @@ html {
   --color-border: #e5e7eb;
   --color-ring: #a64d79;
   --color-plum: #a64d79;
-
-  /* Mantine-style filled colors for bento cards (light mode) */
   --color-bento-pink: #e64980;
   --color-bento-violet: #7950f2;
   --color-bento-teal: #12b886;
   --color-bento-amber: #fab005;
 }
 
-/* Apply theme colors to body */
 body {
   font-family: var(--font-sans);
+  font-size: 1.6rem;
   background-color: var(--color-background);
   color: var(--color-text);
 }
 
-/* Dark mode styles using class-based approach */
 .dark body {
   background-color: var(--color-background-dark);
   color: var(--color-text-dark);
 }
 
-/* Dark mode color overrides */
 .dark {
   --color-foreground: #f5f5f5;
   --color-card: #242424;
   --color-card-foreground: #f5f5f5;
   --color-popover: #242424;
   --color-popover-foreground: #f5f5f5;
+  --color-primary: #a64d79;
+  --color-primary-foreground: #f5f5f5;
+  --color-secondary: #242424;
+  --color-secondary-foreground: #f5f5f5;
   --color-muted: #242424;
   --color-muted-foreground: #a1a1aa;
   --color-accent: #242424;
   --color-accent-foreground: #f5f5f5;
   --color-border: #3f3f46;
   --color-ring: #a64d79;
-
-  /* Mantine-style filled colors for bento cards (dark mode) */
   --color-bento-pink: #c2255c;
   --color-bento-violet: #6741d9;
   --color-bento-teal: #099268;
   --color-bento-amber: #f08c00;
 }
 
-/* Accordion animations */
 @keyframes accordion-down {
   from {
     height: 0;
@@ -231,7 +146,6 @@ body {
   animation: accordion-up 0.1s ease-out;
 }
 
-/* Card hover effects */
 .card-hover {
   transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }

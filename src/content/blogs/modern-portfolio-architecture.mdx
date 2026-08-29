@@ -1,0 +1,26 @@
+---
+title: 'A Modern Portfolio Architecture'
+slug: 'modern-portfolio-architecture'
+date: '2026-02-02'
+excerpt: 'How a small Next.js and MDX structure keeps portfolio content easy to publish, update, and verify.'
+---
+
+This portfolio uses a deliberately small architecture:
+
+- App Router pages for the main user-facing routes.
+- MDX files for blog posts and project writeups.
+- A shared portfolio data module for repeated facts like navigation, experience, and skills.
+- Local UI primitives for consistent buttons, badges, cards, and navigation.
+
+That keeps the site easy to reason about. Static content stays close to the file system, route components stay focused on presentation, and shared facts avoid drifting across pages.
+
+The important part is not the number of folders. It is that each folder has an obvious job.
+
+For a small personal site, this is usually enough architecture:
+
+1. Make publishing easy.
+2. Keep repeated content in one place.
+3. Keep interactive components intentional.
+4. Run linting, type checking, and builds before shipping.
+
+That gives the site room to grow without making the first version feel overbuilt.

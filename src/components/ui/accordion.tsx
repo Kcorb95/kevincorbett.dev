@@ -33,7 +33,10 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <Plus className="mt-[0.4rem] h-[3rem] w-[3rem] shrink-0 text-muted-foreground" />
+      <Plus
+        aria-hidden="true"
+        className="mt-[0.4rem] h-[3rem] w-[3rem] shrink-0 text-muted-foreground"
+      />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));
@@ -49,4 +52,4 @@ const AccordionContent = React.forwardRef<
 ));
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger };

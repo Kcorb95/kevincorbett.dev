@@ -1,0 +1,34 @@
+---
+title: 'Serverless Image Processor'
+slug: 'serverless-image-processor'
+date: '2026-01-24'
+tech:
+  - AWS Lambda
+  - S3
+  - Node.js
+  - Image optimization
+github: 'https://github.com/kcorb95/serverless-image-processor'
+description: 'An event-driven image workflow that resizes, optimizes, and publishes assets with AWS Lambda and S3.'
+featured: true
+---
+
+## Context
+
+Asset-heavy teams often end up with the same problem: images arrive in inconsistent sizes, formats, and naming conventions, then every publishing surface has to compensate.
+
+This project sketches a serverless workflow for normalizing those assets as soon as they land in storage.
+
+## Approach
+
+The processor listens for new objects in S3, runs image transformations in Lambda, and writes optimized variants back to predictable output paths.
+
+The useful parts are the boring parts:
+
+- Clear input and output conventions.
+- Small functions with narrow responsibility.
+- Observable failure states.
+- Repeatable local scripts for testing transformations.
+
+## Outcome
+
+The result is a low-maintenance pipeline that lets publishing teams upload once and reuse assets across pages, posts, and campaigns without hand-editing every image.
